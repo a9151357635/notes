@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_top_view" />
+
+
+    <TextView
+        android:id="@+id/me_setting_pwd_hint_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:padding="5dp"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/me_setting_pwd_old_ed"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/route_stroke_white_bg"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="12dp"
+        android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+        android:textColorHint="@color/app_text_main_another_normal_color"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:hint="@string/me_setting_change_please_old_hint"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/me_setting_pwd_new_ed"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/route_stroke_white_bg"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/me_setting_change_please_new_hint"
+        android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+        android:textColorHint="@color/app_text_main_another_normal_color"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:paddingLeft="12dp"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/me_setting_pwd_renew_ed"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/route_stroke_white_bg"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:paddingLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/me_setting_change_please_renew_hint"
+        android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+        android:textColorHint="@color/app_text_main_another_normal_color"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/me_setting_pwd_subimt_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_corners_selector_red_drawable"
+        android:text="确认修改"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>

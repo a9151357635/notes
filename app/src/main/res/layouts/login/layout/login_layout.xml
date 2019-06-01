@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@mipmap/login_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/login_close_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/close"
+            android:contentDescription="@null" />
+
+        <com.bbn.lottery.widget.CircleImageView
+            android:id="@+id/login_logo_iv"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:contentDescription="@null"/>
+
+        <RelativeLayout
+            android:id="@+id/login_account_rl"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/login_logo_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/route_stroke_login_white_bg">
+
+            <TextView
+                android:id="@+id/login_account_hint_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="8dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:drawableLeft="@mipmap/account_logo"
+                android:text="@string/login_account_hint" />
+
+            <EditText
+                android:id="@+id/login_account_ed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:hint="@string/login_account_input_hint"
+                android:textSize="14sp"
+                android:paddingLeft="2dp"
+                android:gravity="left|center"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                android:layout_toRightOf="@id/login_account_hint_tv"
+                android:background="@null"
+                android:maxLines="1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/login_pwd_rl"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/login_account_rl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/route_stroke_login_white_bg">
+
+            <TextView
+                android:id="@+id/login_pwd_hint_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:drawablePadding="8dp"
+                android:drawableLeft="@mipmap/passport_logo"
+                android:text="@string/login_pwd_hint" />
+
+
+            <EditText
+                android:id="@+id/login_pwd_ed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                android:layout_toRightOf="@id/login_pwd_hint_tv"
+                android:background="@null"
+                android:textSize="14sp"
+                android:paddingLeft="2dp"
+                android:gravity="center|left"
+                android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                android:maxLength="20"
+                android:hint="@string/login_pwd_input_hint"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/login_pwd_rl"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_corners_selector_green_drawable"
+            android:text="@string/login_loging_hint"
+            android:textColor="@android:color/white" />
+
+        <LinearLayout
+            android:id="@+id/login_register_ll"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/login_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_free_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/shape_corners_selector_blue_drawable"
+                android:text="@string/login_demo_hint"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/login_register_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/shape_corners_selector_red_login_drawable"
+                android:text="@string/login_register_hint"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_forget_password_tv"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/login_register_ll"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="15dp"
+            android:autoLink="all"
+            android:gravity="center|right"
+            android:background="@drawable/stroke_ripple_mask_selector_drawable"
+            android:text="@string/login_foget_pwd_hint"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+</ScrollView>

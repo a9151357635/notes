@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@id/lottery">
+
+    <fragment android:id="@+id/lottery"
+              android:name="com.ling.kotlin.lottery.LotteryFragment"
+              android:label="lottery"
+              app:layout="@layout/lottery_layout"/>
+    <fragment android:id="@+id/chess"
+              android:label="chess"
+              android:name="com.ling.kotlin.chess.ChessFragment"
+              app:layout="@layout/chess_layout"/>
+    <fragment android:id="@+id/pay"
+              android:label="pay"
+              android:name="com.ling.kotlin.pay.PayFragment"
+              app:layout="@layout/pay_layout"/>
+    <fragment android:id="@+id/server"
+              android:label="server"
+              android:name="com.ling.kotlin.server.ServerFragment"
+              app:layout="@layout/server_layout"/>
+    <fragment android:id="@+id/me"
+              android:label="me"
+              android:name="com.ling.kotlin.me.MeFragment"
+              app:layout="@layout/me_layout"/>
+</navigation>

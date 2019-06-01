@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="borderWidth" format="dimension" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
+    <!-- 水滴下拉刷新样式 -->
+    <declare-styleable name="WaveSwipeHeader">
+        <attr name="wshPrimaryColor" format="color" />
+        <attr name="wshAccentColor" format="color" />
+        <attr name="wshShadowColor" format="color" />
+        <attr name="wshShadowRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="numberProgressBarStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PagerSlidingTab">
+        <attr name="pstsIndicatorColor" format="color" />
+        <attr name="pstsUnderlineColor" format="color" />
+        <attr name="pstsDividerColor" format="color" />
+        <attr name="pstsIndicatorHeight" format="dimension" />
+        <attr name="pstsUnderlineHeight" format="dimension" />
+        <attr name="pstsDividerPadding" format="dimension" />
+        <attr name="pstsTabPaddingLeftRight" format="dimension" />
+        <attr name="pstsScrollOffset" format="dimension" />
+        <attr name="pstsTabBackground" format="reference" />
+        <attr name="pstsShouldExpand" format="boolean" />
+        <attr name="pstsTextAllCaps" format="boolean" />
+    </declare-styleable>
+    <!--loading -->
+    <declare-styleable name="MaterialProgress">
+        <attr name="mp_startColor" format="color" />
+        <attr name="mp_midColor" format="color" />
+        <attr name="mp_endColor" format="color" />
+        <attr name="mp_radius" format="dimension" />
+        <attr name="mp_strokeWidth" format="dimension" />
+        <attr name="mp_speed" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="PasswordInputView">
+        <attr name="pivBorderColor" format="color" />
+        <attr name="pivBorderWidth" format="dimension" />
+        <attr name="pivBorderRadius" format="dimension" />
+        <attr name="pivPasswordColor" format="color" />
+        <attr name="pivPasswordWidth" format="dimension" />
+        <attr name="pivPasswordRadius" format="dimension" />
+        <attr name="pivPasswordLength" format="integer" />
+    </declare-styleable>
+
+    <!--<declare-styleable name="SlidingMenu">-->
+        <!--<attr name="mode">-->
+            <!--<enum name="left" value="0" />-->
+            <!--<enum name="right" value="1" />-->
+        <!--</attr>-->
+        <!--<attr name="viewAbove" format="reference" />-->
+        <!--<attr name="viewBehind" format="reference" />-->
+        <!--<attr name="behindOffset" format="dimension" />-->
+        <!--<attr name="behindWidth" format="dimension" />-->
+        <!--<attr name="behindScrollScale" format="float" />-->
+        <!--<attr name="touchModeAbove">-->
+            <!--<enum name="margin" value="0" />-->
+            <!--<enum name="fullscreen" value="1" />-->
+            <!--<enum name="none" value="2" />-->
+        <!--</attr>-->
+        <!--<attr name="touchModeBehind">-->
+            <!--<enum name="margin" value="0" />-->
+            <!--<enum name="fullscreen" value="1" />-->
+            <!--<enum name="none" value="2" />-->
+        <!--</attr>-->
+        <!--<attr name="shadowDrawable" format="reference" />-->
+        <!--<attr name="shadowWidth" format="dimension" />-->
+        <!--<attr name="fadeEnabled" format="boolean" />-->
+        <!--<attr name="fadeDegree" format="float" />-->
+        <!--<attr name="selectorEnabled" format="boolean" />-->
+        <!--<attr name="selectorDrawable" format="reference" />-->
+    <!--</declare-styleable>-->
+</resources>

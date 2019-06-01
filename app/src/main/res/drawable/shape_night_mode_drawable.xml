@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <size
+        android:width="17dp"
+        android:height="17dp" />
+    <gradient
+        android:startColor="@color/app_night_mode_color"
+        android:endColor="@color/app_night_mode_color" />
+</shape>

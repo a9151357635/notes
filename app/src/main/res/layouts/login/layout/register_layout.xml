@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true">
+
+    <include layout="@layout/title_top_view" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"
+        android:background="@color/app_background_color"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_logo"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:background="@drawable/shape_fill_red_bg_drawable">
+
+                <com.bbn.lottery.widget.CircleImageView
+                    android:id="@+id/register_logo_iv"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/register_logo_iv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/app_name"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fl_username"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/rl_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/route_stroke_white_bg">
+
+                <TextView
+                    android:id="@+id/register_username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:drawableRight="@mipmap/bitian"
+                    android:text="用户名   " />
+
+
+                <EditText
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                    android:singleLine="true"
+                    android:minLines="6"
+                    android:maxLength="15"
+                    android:id="@+id/register_username_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/register_username_tv"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:textColorHint="@color/app_text_main_another_normal_color"
+                    android:hint="账号必须为6-15位数字与字母的组合"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fl_password"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fl_username"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/route_stroke_white_bg">
+
+                <TextView
+                    android:id="@+id/register_password_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/bitian"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:text="创建密码" />
+
+                <EditText
+                    android:id="@+id/register_password_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/register_password_tv"
+                    android:background="@null"
+                    android:hint="6-20位数字字母组合"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:textColorHint="@color/app_text_main_another_normal_color"
+                    android:maxLength="20"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fl_confirmpassword"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fl_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/route_stroke_white_bg">
+
+                <TextView
+                    android:id="@+id/regisgter_confirmpassword_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="3dp"
+                    android:drawableRight="@mipmap/bitian"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:text="确认密码" />
+
+
+                <EditText
+                    android:id="@+id/regisgter_confirmpassword_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/regisgter_confirmpassword_tv"
+                    android:background="@null"
+                    android:hint="请确认密码"
+                    android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:textColorHint="@color/app_text_main_another_normal_color"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/fl_chinesename"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_alignLeft="@+id/fl_phonenumber"
+                android:layout_alignStart="@+id/fl_phonenumber"
+                android:layout_below="@+id/fl_confirmpassword"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/route_stroke_white_bg">
+
+                <TextView
+                    android:id="@+id/register_chinesename_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/bitian"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:text="中文名   " />
+
+                <EditText
+                    android:singleLine="true"
+                    android:id="@+id/register_chinesename_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/register_chinesename_tv"
+                    android:background="@null"
+                    android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:textColorHint="@color/app_text_main_another_normal_color"
+                    android:hint="须与银行户名相同，否则不能出款"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fl_phonenumber"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fl_chinesename"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/route_stroke_white_bg">
+
+                <TextView
+                    android:id="@+id/register_phonenumber_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/bitian"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:text="手机号   " />
+
+
+                <EditText
+                    android:id="@+id/register_phonenumber_ed"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_toRightOf="@id/register_phonenumber_tv"
+                    android:background="@null"
+                    android:hint="请输入手机号码"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textCursorDrawable="@drawable/shape_editext_cursor_drawable"
+                    android:textColor="@color/app_text_main_another_normal_color"
+                    android:textColorHint="@color/app_text_main_another_normal_color"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:textSize="20sp"
+                android:id="@+id/register_btn"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fl_phonenumber"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_corners_selector_red_login_drawable"
+                android:text="注册"
+                android:gravity="center"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/register_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/app_register_regular_color"
+                android:textColor="@color/app_text_main_another_normal_color"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>
+

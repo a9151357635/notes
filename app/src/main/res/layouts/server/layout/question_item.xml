@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@drawable/stroke_ripple_mask_white_selector_drawable"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/question_item_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:gravity="center|left"
+        android:textSize="16sp"
+        android:textColor="@color/app_text_question_color"
+        android:drawableRight="@mipmap/next_icon" />
+
+    <TextView
+        android:id="@+id/question_item_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_below="@+id/question_item_title_tv"
+        android:gravity="center|left"
+        android:layout_marginBottom="5dp"
+        android:textSize="13sp"
+        android:maxLines="2"
+        android:textColor="@color/app_text_three_normal_color"
+        android:ellipsize="end" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="28dp"
+        android:background="@color/app_e1e1e2_color" />
+</RelativeLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_theme_left_color">#172941</color>
+    <color name="app_theme_right_color">#172941</color>
+    <color name="app_fount_color">#f6673d</color>
+    <color name="white">#cdd3e9</color>
+    <color name="app_333333_color">#cdd3e9</color>
+    <color name="app_f8f9fe_color">#131E30</color>
+    <color name="app_6ac5e0_color">#6ac5e0</color>
+    <color name="app_5989ea_color">#5989ea</color>
+    <color name="app_eceff3_color">#071724</color>
+    <color name="app_ae1d22_color">#e1e1e2</color>
+    <color name="app_background_color">#131E30</color>
+    <color name="app_tab_background_color">#172941</color>
+
+    <!--#cdd3e9-->
+    <color name="app_tab_text_normal_color">#6a81a0</color>
+    <color name="app_tab_text_select_color">#f85959</color>
+    <color name="app_e1e1e2_color">#071724</color>
+    <!--主页背景颜色-->
+    <color name="app_home_background_color">#131E30</color>
+    <!--main的tab背景-->
+    <color name="app_main_tab_background_color">#1C2A3E</color>
+    <!--APP主标题字体颜色-->
+    <color name="app_text_main_normal_color">#cdd3e9</color>
+    <!--APP副标题字体颜色-->
+    <color name="app_text_secondary_normal_color">#6a81a0</color>
+    <!--APP另一种主标题字体颜色-->
+    <color name="app_text_main_another_normal_color">#cdd3e9</color>
+
+    <!--APP第三副标题字体颜色-->
+    <color name="app_text_three_normal_color">#6a81a0</color>
+    <!--服务页面——常见问题列表主标题的颜色-->
+    <color name="app_text_question_color">#cdd3e9</color>
+
+    <color name="app_f5f5f7_color">#172941</color>
+    <color name="app_e6e7ea_color">#3d546c</color>
+    <color name="app_check_color">#3d546c</color>
+    <!--投注区域(内容)选择的颜色-->
+    <color name="app_bet_lottery_tab_bg_color">#172941</color>
+    <color name="app_lottery_text_select_color">#cdd3e9</color>
+    <color name="app_lottery_bet_bg_color">#131E30</color>
+    <color name="app_lottery_chip_bg_color">#172941</color>
+    <color name="app_set_chip_color_left_color">#e76f44</color>
+    <color name="app_set_chip_color_right_color">#e76f44</color>
+    <color name="app_bet_sure_color_left_color">#04bf86</color>
+    <color name="app_bet_sure_color_right_color">#04bf86</color>
+
+    <color name="app_me_head_color_left_color">#131E30</color>
+    <color name="app_me_head_color_right_color">#131E30</color>
+
+    <color name="app_explain_basic_text_color">#6a81a0</color>
+    <color name="app_explain_basic_top_color">#3d546c</color>
+    <color name="app_bet_sure_bottom_color">#172941</color>
+
+    <color name="app_night_mode_bg_color">#3f556d</color>
+    <color name="app_night_mode_color">#131E30</color>
+    <color name="app_lottery_line_color">#213045</color>
+    <color name="app_lottery_child_menu_color">#152031</color>
+    <color name="app_edit_cursor_color">#cdd3e9</color>
+    <color name="app_beijing_k8_point_left_color">#3f556d</color>
+    <color name="app_beijing_k8_point_right_color">#3f556d</color>
+    <color name="app_select_left_color">#cdd3e9</color>
+    <color name="app_select_right_color">#cdd3e9</color>
+    <color name="app_select_text_color">#172941</color>
+    <color name="app_pay_dialog_bg_color">#131E30</color>
+</resources>

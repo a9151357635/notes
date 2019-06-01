@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- slidemenu -->
+    <dimen name="room_status_cell_length">56dp</dimen>
+    <dimen name="slidingmenu_offset">165dp</dimen>
+</resources>

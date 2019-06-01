@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_top_view" />
+
+    <TextView
+        android:id="@+id/me_setting_change_pwd_withdraw_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stroke_ripple_mask_white_selector_drawable"
+        android:drawableLeft="@mipmap/me_setting_change_pay_icon"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/next_icon"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="@string/me_setting_change_pay_pwd_hint"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_e1e1e2_color" />
+
+    <TextView
+        android:id="@+id/me_setting_change_pwd_login_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stroke_ripple_mask_white_selector_drawable"
+        android:drawableLeft="@mipmap/me_setting_change_pwd_icon"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/next_icon"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="@string/me_setting_change_login_pwd_hint"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="15sp" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_e1e1e2_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stroke_ripple_mask_white_selector_drawable">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:drawableLeft="@mipmap/me_setting_night_icon"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="@string/me_setting_night_hint"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/me_setting_night_sw"
+            android:layout_width="50dp"
+            android:layout_height="22dp"
+            android:text="白天"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="12dp"
+            android:padding="2dp"
+            android:background="@drawable/shape_night_mode_bg_drawable"
+            android:drawableLeft="@drawable/shape_night_mode_drawable"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_e1e1e2_color" />
+
+    <TextView
+        android:id="@+id/me_setting_clear_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stroke_ripple_mask_white_selector_drawable"
+        android:drawableLeft="@mipmap/me_setting_clear_icon"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="@string/me_setting_clear_hint"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_e1e1e2_color" />
+
+    <TextView
+        android:id="@+id/me_setting_about_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stroke_ripple_mask_white_selector_drawable"
+        android:drawableLeft="@mipmap/me_setting_about_icon"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/next_icon"
+        android:gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="@string/me_setting_about_hint"
+        android:textColor="@color/app_text_main_another_normal_color"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/app_e1e1e2_color" />
+
+    <TextView
+        android:id="@+id/me_setting_version_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="版本：v1.0"
+        android:textColor="@color/app_text_main_another_normal_color" />
+
+    <TextView
+        android:id="@+id/me_setting_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/shape_corners_selector_red_drawable"
+        android:gravity="center"
+        android:text="注销登录"
+        android:textColor="@color/white" />
+
+</LinearLayout>

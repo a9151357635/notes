@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">kotlinProject</string>
+    <string name="pay_withdraw_hint">可提款金额（1~200000）</string>
+    <string name="pay_withdraw_min_hint">提现金额必须大于1元</string>
+    <string name="app_register_regular_color">注册即表示我同意《规则》</string>
+
+</resources>

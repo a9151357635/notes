@@ -1,0 +1,25 @@
+android{
+    defaultConfig {
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+        applicationId "lottery.bbn.com.lottery"
+        buildConfigField "String","APP_TYPE",'"dd"'//APP类型
+        buildConfigField "String","COMPANY_ID",'"08F22DF8F31643C78ADB8DC135E6DC92"'
+        buildConfigField "String","PAY_SERVER_URL",'"https://pay.dadizhifu.com/api"'
+        buildConfigField "String","SERVER_PROXY_URL",'"https://pay.ddjiekou.com"'
+        manifestPlaceholders = [UMENG_APP_KEY: "5a1e67c4a40fa32a1f00022c",
+                                Umeng:"Umeng",
+                                JPUSH_PKGNAME : applicationId,
+                                JPUSH_APPKEY : "72fd50e5482f4ee741ed7802",
+                                JPUSH_CHANNEL : "developer-default"]
+    }
+
+    signingConfigs {
+        config {
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+            keyAlias KEYALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
+}

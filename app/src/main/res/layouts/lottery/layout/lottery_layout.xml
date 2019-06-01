@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_home_background_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_top_view" />
+
+    <!--<com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+        <!--android:id="@+id/home_refresh_lv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--app:srlEnablePreviewInEditMode="true">-->
+
+        <!--&lt;!&ndash;<com.bbn.lottery.widget.publlrefresh.PullRefreshHeader&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--&lt;!&ndash; 轮播图 &ndash;&gt;-->
+            <!--<androidx.viewpager.widget.ViewPager-->
+                <!--android:id="@+id/home_banner_vp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="155dp" />-->
+
+            <!--<include layout="@layout/home_marquee_layout" />-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0.5dp"-->
+                <!--android:layout_marginLeft="12dp"-->
+                <!--android:layout_marginRight="12dp"-->
+                <!--android:background="@color/app_lottery_line_color" />-->
+
+            <!--<com.bbn.lottery.widget.PagerSlidingTab-->
+                <!--android:id="@+id/home_lottery_stab"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="45dp"-->
+                <!--app:pstsDividerColor="@android:color/transparent"-->
+                <!--app:pstsIndicatorColor="@color/app_fount_color"-->
+                <!--app:pstsIndicatorHeight="3dp"-->
+                <!--app:pstsUnderlineColor="@color/app_eceff3_color"-->
+                <!--app:pstsUnderlineHeight="0.5dp" />-->
+            <!--&lt;!&ndash; 轮播图 &ndash;&gt;-->
+            <!--<android.support.v4.view.ViewPager-->
+                <!--android:id="@+id/home_lottery_vp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+
+    <!--<include layout="@layout/home_drag_layout" />-->
+</FrameLayout>
