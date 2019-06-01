@@ -26,4 +26,5 @@
     <color name="app_beijing_k8_point_right_color">@color/app_theme_right_color</color>
     <color name="app_select_text_color">#fff</color>
     <color name="app_pay_dialog_bg_color">#fff</color>
+    <color name="app_message_color">#f6673d</color>
 </resources>

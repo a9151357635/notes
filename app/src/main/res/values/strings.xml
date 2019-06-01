@@ -163,6 +163,7 @@
     <string name="pay_history_detail_time_hint">时间</string>
     <string name="me_user_info_photo_album">从手机相册选择</string>
     <string name="me_user_info_photo_camera">立即拍照</string>
+    <string name="me_level_title_hint">会员等级</string>
     <string name="me_betting_history_win_money_hint">中奖（元）\n%1$s</string>
     <string name="me_betting_history_bet_money_hint">投注（元）\n%1$s</string>
     <string name="me_betting_history_profit_money_hint">盈利（元）\n%1$s</string>
