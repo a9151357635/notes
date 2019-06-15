@@ -14,12 +14,12 @@ android{
                                 JPUSH_CHANNEL : "developer-default"]
     }
 
-    signingConfigs {
-        config {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEYALIAS
-            keyPassword KEY_PASSWORD
-        }
-    }
+//    signingConfigs {
+//        config {
+//            storeFile file(STORE_FILE)
+//            storePassword STORE_PASSWORD
+//            keyAlias KEYALIAS
+//            keyPassword KEY_PASSWORD
+//        }
+//    }
 }

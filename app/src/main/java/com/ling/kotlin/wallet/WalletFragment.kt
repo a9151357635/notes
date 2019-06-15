@@ -42,8 +42,7 @@ class WalletFragment : BaseFragment(), Callback, View.OnClickListener {
         v.wallet_home_my_tv.setOnClickListener(this)
 
         presenter = WalletPresenter(context!!,this)
-        getChatData()
-        getWalletEntityData()
+
     }
 
     private fun initRecycleView(v: View) {
@@ -85,6 +84,11 @@ class WalletFragment : BaseFragment(), Callback, View.OnClickListener {
           R.id.wallet_home_convert_tv -> gotoConvertActivity()
 
       }
+    }
+
+    override fun onResume() {
+        super.onResume()
+      refreshRequest()
     }
 
     /**
