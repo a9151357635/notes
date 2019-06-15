@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/title_rl"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/shape_fill_red_bg_drawable"
-    android:clipToPadding="true"
-              android:paddingTop="25dp"
-    android:orientation="vertical">
-    <RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@id/title_rl"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_fill_red_bg_drawable"
+        android:clipToPadding="true"
+        android:paddingTop="25dp"
+        android:orientation="vertical">
 
-        <TextView
+
+    <TextView
             android:id="@+id/title_back_iv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -22,27 +25,33 @@
             android:padding="10dp"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:drawableLeft="@mipmap/back_white_icon" />
+            android:drawableLeft="@mipmap/back_white_icon"/>
 
-        <TextView
+    <TextView
             android:id="@+id/title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
-            android:textSize="17sp" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textSize="17sp"/>
 
-        <TextView
+    <TextView
             android:id="@+id/title_right_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:background="@drawable/stroke_ripple_nomask_red_selector_drawable"
             android:padding="10dp"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:visibility="gone" />
-    </RelativeLayout>
-</LinearLayout>
+            android:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.ling.kotlin
 
 import androidx.multidex.MultiDexApplication
+import com.facebook.drawee.backends.pipeline.Fresco
 
 class LotteryApp : MultiDexApplication(){
 
@@ -12,6 +13,7 @@ class LotteryApp : MultiDexApplication(){
 
     override fun onCreate() {
         super.onCreate()
+        Fresco.initialize(this)
         instance =  this
     }
 

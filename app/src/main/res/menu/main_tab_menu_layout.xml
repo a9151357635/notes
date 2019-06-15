@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="@string/tab_lottery_title_hint"
-          android:icon="@drawable/tab_lottery_drawable"
+          android:icon="@drawable/main_lottery_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:id="@+id/lottery"/>
     <item android:id="@+id/chess"
-          android:icon="@drawable/tab_chess_drawable"
+          android:icon="@drawable/main_chess_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_chess_title_hint"/>
     <item android:id="@+id/pay"
-          android:icon="@drawable/tab_pay_drawable"
+          android:icon="@drawable/main_wallet_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_pay_title_hint"/>
     <item android:id="@+id/server"
-          android:icon="@drawable/tab_server_drawable"
+          android:icon="@drawable/main_server_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_server_title_hint"/>
     <item android:id="@+id/me"
-          android:icon="@drawable/tab_me_drawable"
+          android:icon="@drawable/main_mine_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_me_title_hint"/>
 </menu>

@@ -49,6 +49,5 @@
             android:layout_gravity="center"
             app:labelVisibilityMode="labeled"
             android:background="@android:color/white"
-            app:itemTextColor="@color/item_color"
             app:menu="@menu/main_tab_menu_layout"/>
 </LinearLayout>

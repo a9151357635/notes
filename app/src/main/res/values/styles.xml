@@ -50,4 +50,12 @@
     <style name="SwitchStyle" parent="AppTheme">
         <item name="colorAccent">@color/app_text_secondary_normal_color</item>
     </style>
+    <style name="CustomAppTheme_textinputLayout" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:textColorHint">#CCFFFFFF</item>
+        <item name="colorControlNormal">#CCFFFFFF</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

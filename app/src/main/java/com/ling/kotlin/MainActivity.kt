@@ -11,6 +11,8 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         val host: NavHostFragment = host as NavHostFragment??:return
         bottomView.setupWithNavController(host.navController)
+        //取消导航栏图标着色
+        bottomView.itemIconTintList = null
 
     }
 

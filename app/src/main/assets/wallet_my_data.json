@@ -1,0 +1,58 @@
+{
+  "totalMoney": "32000.88",
+  "todayMoney": "13000.25",
+  "happyMoney": "13888.88",
+  "happyIncome": "2058.32",
+  "kyMoney": "16888.88",
+  "kyIncome": "-1958.32",
+  "walletHistory": [
+    {
+      "moneyStr": "-1000",
+      "money": "-1000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "投注",
+      "description": "待结算",
+      "typeId": "5"
+    },
+    {
+      "moneyStr": "1000",
+      "money": "1000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "充值",
+      "description": "待入账",
+      "typeId": "3"
+    },
+    {
+      "moneyStr": "-2000",
+      "money": "-2000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "提现",
+      "description": "待确认",
+      "typeId": "1"
+    },
+    {
+      "moneyStr": "-1000",
+      "money": "-1000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "转换",
+      "description": "已成功转换",
+      "typeId": "4"
+    },
+    {
+      "moneyStr": "-1000",
+      "money": "-1000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "投注",
+      "description": "待结算",
+      "typeId": "5"
+    },
+    {
+      "moneyStr": "1000",
+      "money": "1000",
+      "createdTime": "2019-6-7 12:30:30",
+      "type": "充值",
+      "description": "待入账",
+      "typeId": "3"
+    }
+  ]
+}

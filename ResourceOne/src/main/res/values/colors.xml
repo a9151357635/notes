@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_theme_left_color">#f85959</color>
-    <color name="app_theme_right_color">#d43d3d</color>
+    <color name="app_theme_left_color">#FF4A3E</color>
+    <color name="app_theme_right_color">#FB2451</color>
     <color name="app_fount_color">#f6673d</color>
     <color name="app_check_color">#e3453a</color>
     <color name="app_6ac5e0_color">#6ac5e0</color>
@@ -10,7 +10,7 @@
     <!--#cdd3e9-->
     <color name="app_tab_text_normal_color">#666666</color>
     <color name="app_tab_text_select_color">#f85959</color>
-    <color name="app_background_color">#f2f2f2</color>
+    <color name="app_background_color">#FBFBFB</color>
     <color name="app_tab_background_color">#fff</color>
 
     <!--主页背景颜色-->
@@ -42,8 +42,8 @@
     <color name="app_bet_sure_color_right_color">#d43d3d</color>
     <color name="app_bet_sure_bottom_color">#666666</color>
 
-    <color name="app_me_head_color_left_color">#f85959</color>
-    <color name="app_me_head_color_right_color">#d43d3d</color>
+    <color name="app_me_head_color_left_color">#FF4A3E</color>
+    <color name="app_me_head_color_right_color">#FB2451</color>
 
     <color name="app_night_mode_bg_color">#f7f6fb</color>
     <color name="app_night_mode_color">#8ca0ad</color>

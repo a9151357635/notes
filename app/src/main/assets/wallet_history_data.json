@@ -1,0 +1,35 @@
+[
+  {
+    "moneyStr": "-1000",
+    "money": "-1000",
+    "createdTime":"2019-6-7 12:30:30",
+    "type":"投注",
+    "description": "待结算",
+    "typeId":"5"
+
+  } ,
+  {
+    "moneyStr": "+1000",
+    "money": "1000",
+    "createdTime":"2019-6-7 12:30:30",
+    "type":"充值",
+    "description": "待入账",
+    "typeId":"3"
+  } ,
+  {
+    "moneyStr": "-2000",
+    "money": "-2000",
+    "createdTime":"2019-6-7 12:30:30",
+    "type":"提现",
+    "description": "待确认",
+    "typeId":"1"
+  } ,
+  {
+    "moneyStr": "-1000",
+    "money": "-1000",
+    "createdTime":"2019-6-7 12:30:30",
+    "type":"转换",
+    "description": "已成功转换",
+    "typeId":"4"
+  }
+]

@@ -14,8 +14,8 @@
               app:layout="@layout/chess_layout"/>
     <fragment android:id="@+id/pay"
               android:label="pay"
-              android:name="com.ling.kotlin.pay.PayFragment"
-              app:layout="@layout/pay_layout"/>
+              android:name="com.ling.kotlin.wallet.WalletFragment"
+              app:layout="@layout/wallet_home_layout"/>
     <fragment android:id="@+id/server"
               android:label="server"
               android:name="com.ling.kotlin.server.ServerFragment"

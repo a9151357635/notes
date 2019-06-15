@@ -1,0 +1,41 @@
+{
+  "totalMoney": "16888.88",
+  "availableMoney": "16868.88",
+  "todayMoney": "8568.25",
+  "unavailableMoney": "888.88",
+  "walletHistory": [
+    {
+      "moneyStr": "-1000",
+      "money": "-1000",
+      "createdTime":"2019-6-7 12:30:30",
+      "type":"投注",
+      "description": "用户投注",
+      "typeId":"5"
+
+    } ,
+    {
+      "moneyStr": "+1000",
+      "money": "1000",
+      "createdTime":"2019-6-7 12:30:30",
+      "type":"充值",
+      "description": "用户充值",
+      "typeId":"3"
+    } ,
+    {
+      "moneyStr": "-2000",
+      "money": "-2000",
+      "createdTime":"2019-6-7 12:30:30",
+      "type":"提现",
+      "description": "用户提现",
+      "typeId":"1"
+    } ,
+    {
+      "moneyStr": "-1000",
+      "money": "-1000",
+      "createdTime":"2019-6-7 12:30:30",
+      "type":"转换",
+      "description": "转换到棋牌",
+      "typeId":"4"
+    }
+  ]
+}
