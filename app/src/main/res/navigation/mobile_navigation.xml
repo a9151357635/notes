@@ -1,27 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/mobile_navigation"
             app:startDestination="@id/lottery">
 
     <fragment android:id="@+id/lottery"
               android:name="com.ling.kotlin.lottery.LotteryFragment"
               android:label="lottery"
-              app:layout="@layout/lottery_layout"/>
+              tools:layout="@layout/lottery_layout"/>
     <fragment android:id="@+id/chess"
               android:label="chess"
               android:name="com.ling.kotlin.chess.ChessFragment"
-              app:layout="@layout/chess_layout"/>
-    <fragment android:id="@+id/pay"
-              android:label="pay"
+              tools:layout="@layout/chess_layout"/>
+    <fragment android:id="@+id/wallet"
+              android:label="wallet"
               android:name="com.ling.kotlin.wallet.WalletFragment"
-              app:layout="@layout/wallet_home_layout"/>
+              tools:layout="@layout/wallet_home_layout">
+        <action android:id="@+id/action_to_wallet_my_activity"
+                app:destination="@id/wallet_my_activity"/>
+        <action android:id="@+id/action_to_wallet_withdraw_activity"
+                app:destination="@id/wallet_withdraw_activity"/>
+        <action android:id="@+id/action_wallet_to_wallet_pay_activity"
+                app:destination="@id/wallet_pay_activity"/>
+        <action android:id="@+id/action_wallet_to_wallet_convert_activity"
+                app:destination="@id/wallet_convert_activity"/>
+        <action android:id="@+id/action_wallet_to_wallet_history_activity"
+                app:destination="@id/wallet_history_activity"/>
+        <action android:id="@+id/action_wallet_to_wallet_detail_activity"
+                app:destination="@id/wallet_detail_activity"/>
+        <argument android:name="detailData"
+                  app:argType="com.ling.kotlin.wallet.bean.WalletHistoryEntity"/>
+    </fragment>
     <fragment android:id="@+id/server"
               android:label="server"
               android:name="com.ling.kotlin.server.ServerFragment"
-              app:layout="@layout/server_layout"/>
+              tools:layout="@layout/server_layout"/>
     <fragment android:id="@+id/me"
               android:label="me"
               android:name="com.ling.kotlin.me.MeFragment"
-              app:layout="@layout/me_layout"/>
+              tools:layout="@layout/me_layout">
+
+        <action android:id="@+id/action_me_to_lotteryHistoryActivity" app:destination="@id/lotteryHistoryActivity"/>
+        <action android:id="@+id/action_me_to_accountSecurityActivity" app:destination="@id/accountSecurityActivity"/>
+        <argument android:name="type" app:argType="string" android:defaultValue="0"/>
+        <action android:id="@+id/action_me_to_wallet_my_activity" app:destination="@id/wallet_my_activity"/>
+    </fragment>
+
+    <activity android:id="@+id/wallet_my_activity"
+              android:name="com.ling.kotlin.wallet.WalletMyActivity"
+              android:label="我的钱包"
+              tools:layout="@layout/wallet_my_layout"/>
+    <activity android:id="@+id/wallet_withdraw_activity"
+              android:name="com.ling.kotlin.wallet.WithdrawActivity"
+              android:label="提现"
+              tools:layout="@layout/wallet_withdraw_layout"/>
+    <activity android:id="@+id/wallet_pay_activity"
+              android:name="com.ling.kotlin.wallet.PayActivity"
+              android:label="充值"
+              tools:layout="@layout/wallet_pay_layout"/>
+    <activity android:id="@+id/wallet_convert_activity"
+              android:name="com.ling.kotlin.wallet.ConvertActivity"
+              android:label="转换"
+              tools:layout="@layout/wallet_convert_layout"/>
+    <activity android:id="@+id/wallet_history_activity"
+              android:name="com.ling.kotlin.wallet.WalletHistoryActivity"
+              android:label="历史"
+              tools:layout="@layout/wallet_history_layout"/>
+    <activity android:id="@+id/wallet_detail_activity"
+              android:name="com.ling.kotlin.wallet.WalletDetailActivity"
+              android:label="详情"
+              tools:layout="@layout/wallet_detail_layout"/>
+    <activity android:id="@+id/lotteryHistoryActivity"
+              android:name="com.ling.kotlin.me.LotteryHistoryActivity"
+              tools:layout="@layout/me_lottery_history_layout"
+              android:label="LotteryHistoryActivity"/>
+    <activity android:id="@+id/accountSecurityActivity"
+              android:name="com.ling.kotlin.me.AccountSecurityActivity"
+              tools:layout="@layout/me_account_security_layout"
+              android:label="AccountSecurityActivity"/>
 </navigation>

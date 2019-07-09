@@ -25,9 +25,9 @@ class ChartAdapter(data: List<ChartEntity>?) : BaseQuickAdapter<ChartEntity, Bas
         ChartManager.setChartData(mContext, chart, item)
         mTotalTv.text = AppUtils.decimalFormat(item.total.toString())
         if (item.total <= 0) {
-            mTotalTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_down, 0, 0, 0)
+            mTotalTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_wallet_down, 0, 0, 0)
         } else {
-            mTotalTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_up, 0, 0, 0)
+            mTotalTv.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_wallet_up, 0, 0, 0)
         }
     }
 }

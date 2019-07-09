@@ -10,6 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
-        android:src="@mipmap/not_data_icon" />
+        android:src="@mipmap/dialog_bettinghelper_menus" />
 
 </LinearLayout>

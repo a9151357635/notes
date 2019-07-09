@@ -7,6 +7,6 @@ class ConvertActivity : BaseActivity(){
     override val layoutId: Int = R.layout.wallet_convert_layout
 
     override fun initView() {
-        initTitleView("金额抓换")
+        initTitleView("金额转换")
     }
 }

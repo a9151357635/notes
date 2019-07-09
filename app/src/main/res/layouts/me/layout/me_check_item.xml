@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/pay_history_item_icon"
+        android:id="@+id/wallet_item_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
@@ -22,8 +22,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="15dp"
         android:gravity="center"
-        android:layout_toEndOf="@+id/pay_history_item_icon"
-        android:layout_toRightOf="@+id/pay_history_item_icon"
+        android:layout_toEndOf="@+id/wallet_item_icon"
+        android:layout_toRightOf="@+id/wallet_item_icon"
         android:orientation="vertical">
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_gravity="right"
             android:drawablePadding="5dp"
             android:layout_marginTop="10dp"
-            android:drawableRight="@mipmap/next_icon"
+            android:drawableRight="@drawable/ic_next"
             android:textColor="@color/app_text_three_normal_color"
             android:textSize="13sp" />
     </LinearLayout>

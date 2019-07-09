@@ -3,11 +3,6 @@ package com.ling.kotlin.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.text.TextUtils
-import com.ling.kotlin.LotteryApp
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.math.BigDecimal
 import java.util.regex.Pattern
 
@@ -49,7 +44,7 @@ object AppUtils{
         if (TextUtils.isEmpty(file_name)) {
             return ""
         }
-        return LotteryApp.instance!!.assets.open(file_name).bufferedReader().use {
+        return ContextUtils.context.assets.open(file_name).bufferedReader().use {
             it.readText()
         }
     }

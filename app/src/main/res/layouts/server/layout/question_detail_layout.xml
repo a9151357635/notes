@@ -57,8 +57,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
             android:textColor="@color/app_text_main_another_normal_color"
-            android:drawableLeft="@mipmap/server_online"
-            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/ic_me_server"
+            android:drawablePadding="10dp"
             android:text="@string/server_online_hint" />
 
     </RelativeLayout>

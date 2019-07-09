@@ -3,7 +3,6 @@ package com.ling.kotlin.wallet
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ling.kotlin.R
 import com.ling.kotlin.base.BaseActivity
 import com.ling.kotlin.base.Callback
@@ -26,14 +25,16 @@ class WalletHistoryActivity : BaseActivity(), Callback, View.OnClickListener{
 
     override fun initView() {
 
-        initTitleView("钱包记录", "类型", true, true, this)
+        initTitleView("钱包记录", "类型", isRightVisible = true, isBackVisible = true, rightOnClick = this)
         wallet_history_rv.layoutManager = LinearLayoutManager(this)
         adapter = WalletHistoryAdapter(null)
         adapter.setOnItemClickListener { adapter, view, position ->
-            var  data = adapter?.getItem(position) as WalletHistoryEntity
-            val  intent = Intent(this,WalletDetailActivity::class.java)
-            intent.putExtra("data",data)
-            startActivity(intent)
+            view?.let {
+                val data = adapter?.getItem(position) as WalletHistoryEntity
+                val  intent = Intent(this,WalletDetailActivity::class.java).apply { "data" to data }
+//                intent.putExtra("data",data)
+                startActivity(intent)
+            }
         }
         wallet_history_rv.adapter = adapter
         walletPresenter = WalletPresenter(this,this)

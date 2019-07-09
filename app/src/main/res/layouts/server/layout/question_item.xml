@@ -15,7 +15,7 @@
         android:gravity="center|left"
         android:textSize="16sp"
         android:textColor="@color/app_text_question_color"
-        android:drawableRight="@mipmap/next_icon" />
+        android:drawableRight="@drawable/ic_next" />
 
     <TextView
         android:id="@+id/question_item_content_tv"

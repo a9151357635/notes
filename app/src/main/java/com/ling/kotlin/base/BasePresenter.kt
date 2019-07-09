@@ -1,12 +1,8 @@
 package com.ling.kotlin.base
 
- abstract class BasePresenter {
+ abstract class BasePresenter(callback: Callback) {
 
-    private var callback:Callback ?= null
-
-    constructor(callback: Callback){
-        this.callback = callback
-    }
+    private var callback:Callback ?= callback
 
      fun callback(`object`: Any?, url: String) {
         if (`object` == null) {

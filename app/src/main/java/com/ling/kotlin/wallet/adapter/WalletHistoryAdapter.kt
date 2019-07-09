@@ -14,14 +14,9 @@ import com.ling.kotlin.wallet.bean.WalletHistoryEntity
 class WalletHistoryAdapter(data: List<WalletHistoryEntity>?) :
     BaseQuickAdapter<WalletHistoryEntity, BaseViewHolder>(R.layout.wallet_history_item, data) {
 
-    private lateinit var sparseIntArray: SparseIntArray
+    private var sparseIntArray: SparseIntArray = SparseIntArray()
 
     init {
-        initIcon()
-    }
-
-    private fun initIcon() {
-        sparseIntArray = SparseIntArray()
         sparseIntArray.put(1, R.drawable.ic_wallet_blue)
         sparseIntArray.put(2, R.drawable.ic_wallet_red)
         sparseIntArray.put(3, R.drawable.ic_wallet_yellow)
@@ -40,7 +35,7 @@ class WalletHistoryAdapter(data: List<WalletHistoryEntity>?) :
                 if (item.money > 0) R.color.app_fount_color else R.color.app_text_main_normal_color
             )
         )
-        mMoneyTv.text = mContext.getString(R.string.pay_history_money_hint, item.moneyStr)
+        mMoneyTv.text = mContext.getString(R.string.wallet_money_hint, item.moneyStr)
         helper.setText(R.id.wallet_history_item_date_tv, item.createdTime)
         helper.setText(R.id.wallet_history_item_des_tv, item.description)
         helper.setText(R.id.wallet_history_item_type_tv, item.type)

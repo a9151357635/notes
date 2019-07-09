@@ -16,7 +16,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_money_hint"
+                android:text="@string/wallet_detail_money_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 
@@ -40,7 +40,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_type_hint"
+                android:text="@string/wallet_detail_type_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 
@@ -69,7 +69,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_state_hint"
+                android:text="@string/wallet_detail_state_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 
@@ -92,7 +92,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_description_hint"
+                android:text="@string/wallet_detail_description_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 
@@ -121,7 +121,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_number_hint"
+                android:text="@string/wallet_detail_number_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 
@@ -144,7 +144,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pay_history_detail_time_hint"
+                android:text="@string/wallet_detail_time_hint"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp" />
 

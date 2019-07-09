@@ -1,18 +1,18 @@
 package com.ling.kotlin.me
 
-import android.content.Intent
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.ling.kotlin.R
 import com.ling.kotlin.base.BaseFragment
-import com.ling.kotlin.wallet.WalletMyActivity
 import kotlinx.android.synthetic.main.me_layout.view.*
 
-class MeFragment : BaseFragment(), View.OnClickListener {
+class MeFragment(override val layoutId:Int = R.layout.me_layout): BaseFragment(), View.OnClickListener {
 
     private lateinit var mLevelTitleTv:TextView
     private lateinit var mLevelTv:TextView
-    override val layoutId: Int = R.layout.me_layout
 
     override fun initView(v: View) {
         v.me_home_setting_iv.visibility = View.INVISIBLE
@@ -64,15 +64,13 @@ class MeFragment : BaseFragment(), View.OnClickListener {
         }
     }
     private fun gotoMyWalletActivity(){
-        var  intent = Intent(context,WalletMyActivity::class.java)
-        startActivity(intent)
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_me_to_wallet_my_activity) }
     }
     private fun gotoBetHistoryActivity(type:String){
-
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_me_to_lotteryHistoryActivity,bundleOf("type" to type)) }
     }
     private fun gotoAccountCenterActivity(){
-        var intent = Intent(context,UserCenterActivity::class.java)
-        startActivity(intent)
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_me_to_accountSecurityActivity) }
     }
 
     private fun gotoServerActivity(){
@@ -88,6 +86,8 @@ class MeFragment : BaseFragment(), View.OnClickListener {
 
     }
     private fun checkNight(){
+        AppCompatDelegate.setDefaultNightMode( AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        activity?.recreate()
 
     }
     private fun clearCache(){
@@ -96,4 +96,5 @@ class MeFragment : BaseFragment(), View.OnClickListener {
     private fun checkVersion(){
 
     }
+
 }

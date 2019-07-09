@@ -1,0 +1,198 @@
+[
+    {
+      "lotteryId": 80,
+      "remainTime": 1561458300,
+      "blockTime": 20,
+      "lotteryName": "急速赛车",
+      "curPeriodNum": 201906250525,
+      "sysTime": 1561458257,
+      "openResult": null,
+      "nextTime": "0001-01-01T00:00:00",
+      "menuDetails": [
+        {
+          "id": "89E7681103FA4DD2B571D9A929D48597",
+          "menuName": "双面玩法",
+          "sort": 1,
+          "lotteryId": 80,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "5BB1AEF3BDB246A8A427661CA3A3F4AE",
+          "menuName": "数字",
+          "sort": 2,
+          "lotteryId": 80,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "F9628BDD6CEA4A788F91F376BA4FAE4F",
+          "menuName": "冠亚和",
+          "sort": 3,
+          "lotteryId": 80,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "80647F0B224547239C7C56A21B3351AD",
+          "menuName": "冠亚组合",
+          "sort": 4,
+          "lotteryId": 80,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        }
+      ],
+      "isHot": 1
+    },
+    {
+      "lotteryId": 81,
+      "remainTime": 1561458270,
+      "blockTime": 20,
+      "lotteryName": "急速飞艇",
+      "curPeriodNum": 201906250525,
+      "sysTime": 1561458257,
+      "openResult": null,
+      "nextTime": "0001-01-01T00:00:00",
+      "menuDetails": [
+        {
+          "id": "480C2079B37A47B8944B9605B562839D",
+          "menuName": "双面玩法",
+          "sort": 1,
+          "lotteryId": 81,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "4C47F68FA4DC4DDFA87232B0C575B99A",
+          "menuName": "数字",
+          "sort": 2,
+          "lotteryId": 81,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "B77772DE40EC47DDB96C36CB191DC815",
+          "menuName": "冠亚和",
+          "sort": 3,
+          "lotteryId": 81,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "817CAA84BEFF49D4878EBB1ACB0C6936",
+          "menuName": "冠亚组合",
+          "sort": 4,
+          "lotteryId": 81,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        }
+      ],
+      "isHot": 1
+    },
+    {
+      "lotteryId": 50,
+      "remainTime": 1561458600,
+      "blockTime": 30,
+      "lotteryName": "北京PK10",
+      "curPeriodNum": 735315,
+      "sysTime": 1561458257,
+      "openResult": null,
+      "nextTime": "2019-06-25T18:30:00",
+      "menuDetails": [
+        {
+          "id": "49D343E11B3A4D8E820964ED1710D414",
+          "menuName": "双面玩法",
+          "sort": 1,
+          "lotteryId": 50,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "B469CEDC14CB4A079667B9787A20F03D",
+          "menuName": "数字",
+          "sort": 2,
+          "lotteryId": 50,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "3A8E5E5DBBFB4A1E9988D62E8C6ED841",
+          "menuName": "冠亚和",
+          "sort": 3,
+          "lotteryId": 50,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "50B1C305A275405AB861724017137395",
+          "menuName": "冠亚组合",
+          "sort": 4,
+          "lotteryId": 50,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        }
+      ],
+      "isHot": 1
+    },
+    {
+      "lotteryId": 88,
+      "remainTime": 1561458300,
+      "blockTime": 20,
+      "lotteryName": "德国赛车",
+      "curPeriodNum": 20190625126,
+      "sysTime": 1561458257,
+      "openResult": null,
+      "nextTime": "0001-01-01T00:00:00",
+      "menuDetails": [
+        {
+          "id": "88D343E11B3A4D8E820964ED1710D414",
+          "menuName": "双面玩法",
+          "sort": 1,
+          "lotteryId": 88,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "8869CEDC14C88A079667B9787A20F03D",
+          "menuName": "数字",
+          "sort": 2,
+          "lotteryId": 88,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "888E5E5DBBFB4A1E9988D62E8C6ED841",
+          "menuName": "冠亚和",
+          "sort": 3,
+          "lotteryId": 88,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        },
+        {
+          "id": "88B1C305A275405AB861724017137395",
+          "menuName": "冠亚组合",
+          "sort": 4,
+          "lotteryId": 88,
+          "menuDetails": null,
+          "gamePlays": null,
+          "isHot": null
+        }
+      ],
+      "isHot": 1
+    }
+  ]

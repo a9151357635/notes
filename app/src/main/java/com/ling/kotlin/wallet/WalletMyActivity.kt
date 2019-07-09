@@ -1,13 +1,11 @@
 package com.ling.kotlin.wallet
 
 import android.content.Intent
-import android.text.TextUtils
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.ling.kotlin.R
 import com.ling.kotlin.base.BaseActivity
 import com.ling.kotlin.base.Callback
@@ -32,10 +30,13 @@ class WalletMyActivity : BaseActivity(), Callback{
         wallet_my_history_rv.layoutManager = LinearLayoutManager(this)
         adapter = WalletHistoryAdapter(null)
         adapter.setOnItemClickListener { adapter, view, position ->
-            var  data = adapter?.getItem(position) as WalletHistoryEntity
-            val  intent = Intent(this,WalletDetailActivity::class.java)
-            intent.putExtra("data",data)
-            startActivity(intent)
+
+            view?.let {
+                val data = adapter?.getItem(position) as WalletHistoryEntity
+                val  intent = Intent(this,WalletDetailActivity::class.java).apply { putExtras(bundleOf("data" to data)) }
+                startActivity(intent)
+            }
+
         }
         addFooterView()
         wallet_my_history_rv.adapter = adapter
@@ -44,10 +45,10 @@ class WalletMyActivity : BaseActivity(), Callback{
     }
 
     private fun addFooterView(){
-        var  footerView = LayoutInflater.from(this).inflate(R.layout.wallet_histroy_footer_layout,null)
+        val footerView = LayoutInflater.from(this).inflate(R.layout.wallet_histroy_footer_layout,null)
         adapter.addFooterView(footerView)
         footerView.setOnClickListener {
-            var  intent = Intent(this,WalletHistoryActivity::class.java)
+            val intent = Intent(this,WalletHistoryActivity::class.java)
             startActivity(intent)
         }
     }
@@ -73,10 +74,6 @@ class WalletMyActivity : BaseActivity(), Callback{
     }
 
     private fun setTextColor(textView: TextView, number: String) {
-        var number = number
-        if (TextUtils.isEmpty(number)) {
-            number = "0"
-        }
         val numberF = java.lang.Float.valueOf(number)
         if (numberF <= 0) {
             textView.text = number
@@ -85,5 +82,6 @@ class WalletMyActivity : BaseActivity(), Callback{
             textView.setTextColor(ContextCompat.getColor(this, R.color.app_fount_color))
             textView.text = "+$number"
         }
+
     }
 }

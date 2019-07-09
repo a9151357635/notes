@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background_color">
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/lotteryVp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    android:orientation="vertical">
+                <com.ling.kotlin.widget.banner.BannerLayout
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"/>
+                <com.ling.kotlin.widget.marquee.SimpleMarqueeView
+                        android:id="@+id/marqueesView"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"/>
+                <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/lotteryTab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                app:tabMode="scrollable"/>
+            </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

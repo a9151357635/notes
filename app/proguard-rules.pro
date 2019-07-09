@@ -22,3 +22,11 @@
 -keepattributes *Annotation*
 -keep class kotlin.** { *; }
 -keep class org.jetbrains.** { *; }
+-keep class com.chad.library.adapter.** {
+*;
+}
+-keep public class * extends com.chad.library.adapter.base.BaseQuickAdapter
+-keep public class * extends com.chad.library.adapter.base.BaseViewHolder
+-keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
+     <init>(...);
+}

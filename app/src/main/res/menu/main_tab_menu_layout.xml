@@ -9,7 +9,7 @@
           android:icon="@drawable/main_chess_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_chess_title_hint"/>
-    <item android:id="@+id/pay"
+    <item android:id="@+id/wallet"
           android:icon="@drawable/main_wallet_selector_drawable"
           android:iconTint="@android:color/transparent"
           android:title="@string/tab_pay_title_hint"/>

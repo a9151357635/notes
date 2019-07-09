@@ -2,19 +2,21 @@ package com.ling.kotlin
 
 import androidx.multidex.MultiDexApplication
 import com.facebook.drawee.backends.pipeline.Fresco
+import io.paperdb.Paper
 
 class LotteryApp : MultiDexApplication(){
 
 
     companion object {
-        var instance:LotteryApp? = null
+       lateinit  var instance:LotteryApp
         private set
     }
 
     override fun onCreate() {
         super.onCreate()
-        Fresco.initialize(this)
         instance =  this
+        Paper.init(this.getApplicationContext())
+        Fresco.initialize(this)
     }
 
 }

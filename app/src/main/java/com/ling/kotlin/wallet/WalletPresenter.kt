@@ -11,19 +11,14 @@ import com.ling.kotlin.wallet.bean.WalletEntity
 import com.ling.kotlin.wallet.bean.WalletHistoryEntity
 import com.ling.kotlin.wallet.bean.WalletMyEntity
 
-class WalletPresenter : BasePresenter{
-
-    private var context:Context?=null
-    constructor(context: Context,callback: Callback):super(callback){
-        this.context = context
-    }
+class WalletPresenter(private var context: Context?, callback: Callback) : BasePresenter(callback) {
 
     fun getChartData(url:String){
         val result = AppUtils.getAssetStr("wallet_chart_data.json")
         if(TextUtils.isEmpty(result)){
             return
         }
-        var chatEntitys = JSonUtils.parseArray(result, ChartEntity::class.javaObjectType)
+        val chatEntitys = JSonUtils.parseArray(result, ChartEntity::class.javaObjectType)
         callback(chatEntitys,url)
     }
 
@@ -32,7 +27,7 @@ class WalletPresenter : BasePresenter{
         if(TextUtils.isEmpty(result)){
             return
         }
-        var  walletEntity = JSonUtils.parseObject(result,WalletEntity::class.javaObjectType)
+        val walletEntity = JSonUtils.parseObject(result,WalletEntity::class.javaObjectType)
         callback(walletEntity,url)
     }
 
@@ -41,16 +36,16 @@ class WalletPresenter : BasePresenter{
         if(TextUtils.isEmpty(result)){
             return
         }
-        var walletHistory = JSonUtils.parseArray(result, WalletHistoryEntity::class.javaObjectType)
+        val walletHistory = JSonUtils.parseArray(result, WalletHistoryEntity::class.javaObjectType)
         callback(walletHistory,url)
     }
 
     fun getMyWalletData(url: String){
-        var  result = AppUtils.getAssetStr("wallet_my_data.json")
+        val result = AppUtils.getAssetStr("wallet_my_data.json")
         if(TextUtils.isEmpty(result)){
             return
         }
-        var walletMyEntity = JSonUtils.parseObject(result,WalletMyEntity::class.javaObjectType)
+        val walletMyEntity = JSonUtils.parseObject(result,WalletMyEntity::class.javaObjectType)
         callback(walletMyEntity,url)
     }
 }

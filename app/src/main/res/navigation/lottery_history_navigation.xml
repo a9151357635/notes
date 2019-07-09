@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lottery_history_navigation"
+            app:startDestination="@id/wait">
+
+    <fragment android:id="@+id/wait"
+              android:name="com.ling.kotlin.me.LotteryWaitFragment"
+              android:label="wait"
+              tools:layout="@layout/me_lottery_history_wait_layout"/>
+
+    <fragment android:id="@+id/win"
+              android:label="win"
+              android:name="com.ling.kotlin.me.LotteryWinFragment"
+              tools:layout="@layout/me_lottery_history_win_layout"/>
+
+    <fragment android:id="@+id/nowin"
+              android:label="nowin"
+              android:name="com.ling.kotlin.me.LotteryNoWinFragment"
+              tools:layout="@layout/me_lottery_history_nowin_layout"/>
+</navigation>

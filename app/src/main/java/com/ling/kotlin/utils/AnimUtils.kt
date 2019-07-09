@@ -16,7 +16,7 @@ object AnimUtils {
         animator.duration = 1000
         animator.addUpdateListener { valueAnimator ->
             val value = valueAnimator.animatedValue as Float
-            textView?.text = AppUtils.decimalFormat(value.toString())
+            textView.text = AppUtils.decimalFormat(value.toString())
         }
         animator.start()
     }
