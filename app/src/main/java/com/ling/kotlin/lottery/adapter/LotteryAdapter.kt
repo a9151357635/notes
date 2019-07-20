@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.ling.kotlin.R
 import com.ling.kotlin.lottery.bean.LotteryEntity
-import com.ling.kotlin.utils.LotteryUtils
+import com.ling.kotlin.lottery.utils.LotteryUtils
 
 class LotteryAdapter(data: List<LotteryEntity>?) :
     BaseQuickAdapter<LotteryEntity, BaseViewHolder>(R.layout.lottery_item, data) {

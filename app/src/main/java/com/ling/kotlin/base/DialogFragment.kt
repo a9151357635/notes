@@ -143,7 +143,8 @@ class NoticeDialog( override val layoutId: Int = R.layout.notice_dialog_layout) 
             val (_, title, noticeContent, createTime) = it[noticeSize]
             mTitleTv.text = title
             mContentTv.text = noticeContent
-            mTimeTv.text = DateUtils.getTimeYYYYMMDD(DateUtils.getDate(createTime))
+//            mTimeTv.text = DateUtils.getTimeYYYYMMDD(DateUtils.getDate(createTime))
+            mTimeTv.text = createTime.replace("T"," ",true)
         }
     }
 }

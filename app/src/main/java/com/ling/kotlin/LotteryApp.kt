@@ -15,7 +15,7 @@ class LotteryApp : MultiDexApplication(){
     override fun onCreate() {
         super.onCreate()
         instance =  this
-        Paper.init(this.getApplicationContext())
+        Paper.init(this.applicationContext)
         Fresco.initialize(this)
     }
 

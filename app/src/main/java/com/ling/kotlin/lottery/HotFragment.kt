@@ -1,8 +1,5 @@
 package com.ling.kotlin.lottery
 
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
@@ -15,7 +12,6 @@ import com.ling.kotlin.lottery.adapter.LotteryAdapter
 import com.ling.kotlin.lottery.bean.LotteryEntity
 import com.ling.kotlin.lottery.viewmodel.LotteryViewModel
 import com.ling.kotlin.utils.CacheUtils
-import com.ling.kotlin.wallet.WalletDetailActivity
 import kotlinx.android.synthetic.main.hot_layout.view.*
 
 class HotFragment (override val layoutId:Int = R.layout.hot_layout):BaseFragment(){
@@ -24,11 +20,10 @@ class HotFragment (override val layoutId:Int = R.layout.hot_layout):BaseFragment
     override fun initView(v: View) {
         v.hotRv.layoutManager = GridLayoutManager(context, 2)
         adapter = LotteryAdapter(null)
-        adapter.setOnItemClickListener { adapter, _, position ->
+        adapter.setOnItemClickListener { adapter, view, position ->
             val entity = adapter.getItem(position) as LotteryEntity
-            entity?.let {
-                val  intent = Intent(context, WalletDetailActivity::class.java).apply { "data" to entity}
-                startActivity(intent)
+            view?.let {
+                Navigation.findNavController(it).navigate(R.id.action_lottery_to_betActivity,  bundleOf("lotteryId" to entity.lotteryId,"lotteryName" to entity.lotteryName,"menuList" to entity.menuDetails))
             }
 
         }

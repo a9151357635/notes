@@ -5,17 +5,17 @@
             app:startDestination="@id/wait">
 
     <fragment android:id="@+id/wait"
-              android:name="com.ling.kotlin.me.LotteryWaitFragment"
+              android:name="com.ling.kotlin.lottery.LotteryWaitFragment"
               android:label="wait"
-              tools:layout="@layout/me_lottery_history_wait_layout"/>
+              tools:layout="@layout/lottery_history_wait_layout"/>
 
     <fragment android:id="@+id/win"
               android:label="win"
-              android:name="com.ling.kotlin.me.LotteryWinFragment"
-              tools:layout="@layout/me_lottery_history_win_layout"/>
+              android:name="com.ling.kotlin.lottery.LotteryWinFragment"
+              tools:layout="@layout/lottery_history_win_layout"/>
 
     <fragment android:id="@+id/nowin"
               android:label="nowin"
-              android:name="com.ling.kotlin.me.LotteryNoWinFragment"
-              tools:layout="@layout/me_lottery_history_nowin_layout"/>
+              android:name="com.ling.kotlin.lottery.LotteryNoWinFragment"
+              tools:layout="@layout/lottery_history_nowin_layout"/>
 </navigation>

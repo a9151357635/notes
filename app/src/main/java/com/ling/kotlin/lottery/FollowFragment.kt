@@ -1,8 +1,10 @@
 package com.ling.kotlin.lottery
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ling.kotlin.R
 import com.ling.kotlin.base.BaseFragment
@@ -19,7 +21,11 @@ class FollowFragment(override val layoutId:Int = R.layout.collection_layout) : B
     override fun initView(v: View) {
         v.collectionRv.layoutManager = GridLayoutManager(context, 2)
         adapter = LotteryAdapter(null)
-        adapter.setOnItemClickListener { adapter, _, position ->
+        adapter.setOnItemClickListener { adapter, view, position ->
+            val entity = adapter.getItem(position) as LotteryEntity
+            view?.let {
+                Navigation.findNavController(it).navigate(R.id.action_lottery_to_betActivity,  bundleOf("lotteryId" to entity.lotteryId,"lotteryName" to entity.lotteryName,"menuList" to entity.menuDetails))
+            }
         }
         adapter.setOnItemChildClickListener { adapter, view, position ->
             val entity = adapter.getItem(position) as LotteryEntity

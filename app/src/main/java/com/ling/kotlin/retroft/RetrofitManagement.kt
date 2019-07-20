@@ -63,7 +63,7 @@ class RetrofitManagement private constructor(){
 
     fun buildGson(): Gson {
         return  GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .setDateFormat("yyyy-MM-dd HH:mm:bet_open_layout")
             .registerTypeAdapter(Int::class.java, IntegerDefaultAdapter())
             .registerTypeAdapter(Int::class.javaPrimitiveType, IntegerDefaultAdapter())
             .create()

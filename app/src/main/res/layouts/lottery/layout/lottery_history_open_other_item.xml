@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    <TextView
+            android:id="@+id/number_one_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/ic_circle_blue"
+            android:text="01"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+
+    <TextView
+            android:id="@+id/number_two_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_one_tv"
+            android:text="01"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+    <TextView
+            android:id="@+id/number_three_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_two_tv"
+            android:text="01"
+            android:layout_marginStart="2dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+
+    <TextView
+            android:id="@+id/number_four_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_three_tv"
+            android:text="01"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+    <TextView
+            android:id="@+id/number_five_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_four_tv"
+            android:text="01"
+            android:layout_marginStart="2dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+
+    <TextView
+            android:id="@+id/number_six_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_five_tv"
+            android:text="01"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+    <TextView
+            android:id="@+id/number_seven_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_add_tv"
+            android:text="01"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"/>
+
+    <TextView
+            android:id="@+id/number_content_one_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_one_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+
+    <TextView
+            android:id="@+id/number_content_two_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_two_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_content_one_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+
+
+    <TextView
+            android:id="@+id/number_content_three_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/number_two_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_content_two_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            android:textSize="13sp"/>
+
+
+    <TextView
+            android:id="@+id/number_content_four_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_three_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_content_three_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+
+
+    <TextView
+            android:id="@+id/number_content_five_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_four_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_content_four_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+
+
+    <TextView
+            android:id="@+id/number_content_six_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_five_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_content_five_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+    <TextView
+            android:id="@+id/number_content_seven_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:text="羊"
+            app:layout_constraintTop_toBottomOf="@+id/number_add_tv"
+            app:layout_constraintStart_toEndOf="@+id/number_add_tv"
+            android:textColor="@color/app_text_main_another_normal_color"
+            android:textSize="13sp"/>
+    <TextView
+            android:id="@+id/number_add_tv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text="+"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/number_six_tv"
+            android:gravity="center"
+            android:textColor="@color/app_218cdc_color"
+            android:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

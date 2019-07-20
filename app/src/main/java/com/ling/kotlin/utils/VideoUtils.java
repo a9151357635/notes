@@ -14,12 +14,7 @@ public class VideoUtils {
         //播放
         videoView.start();
         //循环播放
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                videoView.start();
-            }
-        });
+        videoView.setOnCompletionListener(mediaPlayer -> videoView.start());
 
     }
 

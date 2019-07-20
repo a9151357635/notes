@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/bet_drawer_type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="15dp"
+            android:drawablePadding="12dp"
+            android:gravity="center|left"
+            android:textColor="@color/app_lottery_sliding_menu_text_color"
+            android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bet_drawer_item_rv"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="false"
+            android:orientation="vertical"
+            android:layout_height="wrap_content" />
+
+    <View
+            android:id="@+id/bet_drawer_item_line"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:visibility="gone"
+            android:background="@color/app_e6e7ea_color"/>
+</LinearLayout>

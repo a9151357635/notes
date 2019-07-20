@@ -30,3 +30,4 @@
 -keepclassmembers  class **$** extends com.chad.library.adapter.base.BaseViewHolder {
      <init>(...);
 }
+-keep class androidx.core.app.CoreComponentFactory { *; }

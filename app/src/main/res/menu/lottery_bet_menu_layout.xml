@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/area"
+            android:icon="@drawable/lottery_area_selector_drawable"
+            android:iconTint="@android:color/transparent"
+            android:title="@string/lottery_area_title"/>
+    <item
+            android:id="@+id/chat"
+            android:icon="@drawable/lottery_chat_selector_drawable"
+            android:iconTint="@android:color/transparent"
+            android:title="@string/lottery_chat_title"/>
+</menu>

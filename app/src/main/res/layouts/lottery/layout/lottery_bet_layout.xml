@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/app_background_color">
+    <include layout="@layout/bet_title_layout"/>
+    <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/bet_drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <include layout="@layout/bet_content_layout"/>
+        <com.google.android.material.navigation.NavigationView
+                android:id="@+id/bet_nav_view"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                app:insetForeground="@null"
+                android:background="@color/white"
+                app:menu="@null"
+                android:scrollbars="none"
+                app:headerLayout="@layout/lottery_drawer_menu"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

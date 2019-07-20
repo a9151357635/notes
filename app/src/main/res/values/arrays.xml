@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="lottery_array">
-        <item>全部</item>
-        <item>PK10系列</item>
-        <item>时时彩系列</item>
-        <item>六合彩</item>
-        <item>PC蛋蛋系列</item>
-        <item>快三系列</item>
-        <item>11选5系列</item>
-    </string-array>
-
     <string-array name="lottery_id">
         <item>热门彩种</item>
         <item>全部彩种</item>
@@ -53,5 +43,4 @@
         <item>必出号码</item>
     </string-array>
 
-    <!--时时彩系列。PC蛋蛋系列-->
 </resources>

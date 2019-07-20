@@ -9,9 +9,7 @@ import kotlinx.android.synthetic.main.me_account_security_layout.*
 /**
  * 用户管理中心
  */
-class AccountSecurityActivity : BaseActivity(){
-
-    override val layoutId: Int= R.layout.me_account_security_layout
+class AccountSecurityActivity( override val layoutId: Int= R.layout.me_account_security_layout) : BaseActivity(){
 
     override fun initView() {
         initTitleView("账号与安全")

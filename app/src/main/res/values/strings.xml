@@ -26,7 +26,11 @@
     <string name="lottery_hot_title">热门</string>
     <string name="lottery_all_title">全部</string>
     <string name="lottery_collection_title">关注</string>
-
+    <string name="lottery_area_title">投注区</string>
+    <string name="lottery_chat_title">聊天室</string>
+    <string name="lottery_period_hint">第%1$s期</string>
+    <string name="lottery_select_max_hint">超过最大选中的%1$d号码</string>
+    <string name="lottery_select_duplicate_hint">选择号码重复</string>
 
     <string name="wallet_money_hint">%1$s元</string>
     <string name="wallet_detail_money_hint">金额</string>

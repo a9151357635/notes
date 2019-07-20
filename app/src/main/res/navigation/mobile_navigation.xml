@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+
             android:id="@+id/mobile_navigation"
             app:startDestination="@id/lottery">
 
     <fragment android:id="@+id/lottery"
               android:name="com.ling.kotlin.lottery.LotteryFragment"
               android:label="lottery"
-              tools:layout="@layout/lottery_layout"/>
+              tools:layout="@layout/lottery_layout">
+        <action android:id="@+id/action_lottery_to_betActivity"
+                app:destination="@id/betActivity"/>
+        <argument android:name="lotteryId" app:argType="integer" android:defaultValue="0"/>
+        <argument android:name="lotteryName" app:argType="string"/>
+        <argument android:name="menuList" app:argType="com.ling.kotlin.lottery.bean.MenuEntity"/>
+    </fragment>
     <fragment android:id="@+id/chess"
               android:label="chess"
               android:name="com.ling.kotlin.chess.ChessFragment"
@@ -40,10 +48,13 @@
               android:name="com.ling.kotlin.me.MeFragment"
               tools:layout="@layout/me_layout">
 
-        <action android:id="@+id/action_me_to_lotteryHistoryActivity" app:destination="@id/lotteryHistoryActivity"/>
-        <action android:id="@+id/action_me_to_accountSecurityActivity" app:destination="@id/accountSecurityActivity"/>
+        <action android:id="@+id/action_me_to_lotteryHistoryActivity"
+                app:destination="@id/lotteryHistoryActivity"/>
+        <action android:id="@+id/action_me_to_accountSecurityActivity"
+                app:destination="@id/accountSecurityActivity"/>
         <argument android:name="type" app:argType="string" android:defaultValue="0"/>
-        <action android:id="@+id/action_me_to_wallet_my_activity" app:destination="@id/wallet_my_activity"/>
+        <action android:id="@+id/action_me_to_wallet_my_activity"
+                app:destination="@id/wallet_my_activity"/>
     </fragment>
 
     <activity android:id="@+id/wallet_my_activity"
@@ -71,11 +82,15 @@
               android:label="详情"
               tools:layout="@layout/wallet_detail_layout"/>
     <activity android:id="@+id/lotteryHistoryActivity"
-              android:name="com.ling.kotlin.me.LotteryHistoryActivity"
-              tools:layout="@layout/me_lottery_history_layout"
+              android:name="com.ling.kotlin.lottery.LotteryHistoryActivity"
+              tools:layout="@layout/lottery_history_layout"
               android:label="LotteryHistoryActivity"/>
     <activity android:id="@+id/accountSecurityActivity"
               android:name="com.ling.kotlin.me.AccountSecurityActivity"
               tools:layout="@layout/me_account_security_layout"
               android:label="AccountSecurityActivity"/>
+    <activity android:id="@+id/betActivity"
+              android:name="com.ling.kotlin.lottery.BetActivity"
+              android:label="投注主页"
+              tools:layout="@layout/lottery_bet_layout"/>
 </navigation>

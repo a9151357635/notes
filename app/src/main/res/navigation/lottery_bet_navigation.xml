@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lottery_bet_navigation"
+            app:startDestination="@id/area">
+
+
+    <fragment android:id="@+id/area"
+              android:label="area"
+              android:name="com.ling.kotlin.lottery.AreaFragment"
+              tools:layout="@layout/lottery_area_layout"/>
+
+    <fragment android:id="@+id/chat"
+              android:label="chat"
+              android:name="com.ling.kotlin.lottery.ChatFragment"
+              tools:layout="@layout/lottery_chat_layout"/>
+</navigation>

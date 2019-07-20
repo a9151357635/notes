@@ -2,7 +2,10 @@ package com.ling.kotlin.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.os.Build
+import android.text.Html
 import android.text.TextUtils
+import android.widget.TextView
 import java.math.BigDecimal
 import java.util.regex.Pattern
 
@@ -46,6 +49,20 @@ object AppUtils{
         }
         return ContextUtils.context.assets.open(file_name).bufferedReader().use {
             it.readText()
+        }
+    }
+    /**
+     * 改变TextView某个字体的颜色值 带有string文件占位符
+     *
+     * @param colorStr
+     * @param resStringId   string字符串Id
+     * @param changeContent 需要改变的内容
+     * @param mTextView     展示控件
+     */
+    fun changeTextColor( context: Context,colorStr: String,resStringId: Int,changeContent: String, mTextView: TextView?) {
+        mTextView?.let {
+            val str = "<font color='$colorStr'>$changeContent</font>"
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) it.text = Html.fromHtml(context.getString(resStringId, str), Html.FROM_HTML_MODE_COMPACT) else it.text = Html.fromHtml(context.getString(resStringId, str))
         }
     }
 

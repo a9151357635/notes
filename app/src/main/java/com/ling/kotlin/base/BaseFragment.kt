@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProviders
 import com.ling.kotlin.login.LoginActivity
@@ -68,9 +70,9 @@ abstract class BaseFragment : Fragment(), IBaseViewModelEventEventObserver {
     override fun pop() {
     }
 
-    fun <T : BaseViewModel> getViewModel(clz:Class<T>) = ViewModelProviders.of(this).get(clz)
+    fun <T : BaseViewModel> getViewModel(activity: FragmentActivity, clz:Class<T>) = ViewModelProviders.of(activity).get(clz)
 
-
+    fun <T : BaseViewModel> getViewModel( clz:Class<T>) = ViewModelProviders.of(this).get(clz)
     fun showDialog(clz: DialogFragment, tag: String) {
 
         val ft = childFragmentManager.beginTransaction()
