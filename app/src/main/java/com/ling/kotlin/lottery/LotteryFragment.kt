@@ -1,7 +1,6 @@
 package com.ling.kotlin.lottery
 
 import android.text.TextUtils
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -69,7 +68,7 @@ class LotteryFragment(override val layoutId:Int = R.layout.lottery_layout) : Bas
 
 
     private fun setUpViewModel(){
-        viewModel.getLotteryEntitys(true).observe(this, Observer {
+        viewModel.getLotteryEntitys().observe(this, Observer {
             timerUtils.start()
         })
 

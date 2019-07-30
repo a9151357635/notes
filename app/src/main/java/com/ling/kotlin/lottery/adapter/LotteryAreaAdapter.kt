@@ -13,20 +13,41 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.ling.kotlin.R
 import com.ling.kotlin.lottery.bean.LotteryGroupInfoEntity
 import com.ling.kotlin.lottery.bean.LotteryInfoEntity
-import com.ling.kotlin.lottery.utils.LotteryId
-import com.ling.kotlin.lottery.utils.LotteryUtils
+import com.ling.kotlin.lottery.utils.*
+import com.ling.kotlin.utils.CombineUtils
 import com.ling.kotlin.utils.ToastUtils
 import com.ling.kotlin.widget.GridItemDecoration
+import java.util.*
 import java.util.regex.Pattern
+import kotlin.system.measureTimeMillis
 
+/**
+ * 投注区域适配器
+ */
 class LotteryAreaAdapter(dataList: List<LotteryGroupInfoEntity>?) :
     BaseQuickAdapter<LotteryGroupInfoEntity, BaseViewHolder>(R.layout.lottery_area_item, dataList) {
+    private val soundPoolUtils by lazy { SoundPoolUtils(mContext) }
     private val selectList = mutableListOf<LotteryInfoEntity>()
+    //组合后的新集合
+    val combineList = mutableListOf<LotteryInfoEntity>()
+    private var menuId:String?=null
+    //随机数
+    private var randomPosition = -1
+    fun setMenuId(menuId:String){
+        this.menuId = menuId
+    }
+
+    fun setRandomPosition(randomPosition:Int){
+        this.randomPosition = randomPosition
+    }
     override fun setNewData(data: List<LotteryGroupInfoEntity>?) {
         selectList.clear()
+        combineList.clear()
         super.setNewData(data)
     }
+
     override fun convert(helper: BaseViewHolder, item: LotteryGroupInfoEntity) {
+        var infoEntityList = convertRandomPosition(helper.layoutPosition,item)
         val nameTv = helper.getView<TextView>(R.id.lottery_area_item_type_tv)
         nameTv?.text = item.name
         val mContentRv = helper.getView<RecyclerView>(R.id.lottery_area_item_content_rv)
@@ -35,31 +56,50 @@ class LotteryAreaAdapter(dataList: List<LotteryGroupInfoEntity>?) :
             RecyclerView.VERTICAL,
             false
         ) else GridLayoutManager(mContext, if (item.lotteryId in LotteryUtils.sixMarkIdList) 3 else 2)
-        mContentRv.addItemDecoration(GridItemDecoration(mContext, 1, R.color.app_e1e1e2_color))
+
         val contentAdapter = when {
-            item.itemType == LotteryGroupInfoEntity.MARK_SIX -> AreaMarkSixAdapter(null)
-            item.itemType == LotteryGroupInfoEntity.K_THREE -> AreaKThreeAdapter(null)
-            else -> AreaInfoAdapter(null, item.itemType)
+            item.itemType == LotteryGroupInfoEntity.MARK_SIX -> AreaMarkSixAdapter(infoEntityList)
+            item.itemType == LotteryGroupInfoEntity.K_THREE -> AreaKThreeAdapter(infoEntityList)
+            else -> AreaInfoAdapter(infoEntityList, item.itemType)
         }
-        contentAdapter.setNewData(item.datas)
         mContentRv.adapter = contentAdapter
         contentAdapter.setOnItemClickListener { adapter, view, position ->
+            soundPoolUtils.playBetSelect()
+            //播放选择声音
             val entity = adapter.getItem(position) as LotteryInfoEntity
-            if (isSelectEntity(entity)) {
+            if (isSelectEntity(entity,helper.layoutPosition)) {
                 adapter.notifyItemChanged(position)
                 //重新设置赔率
-                if(entity.playId in LotteryId.markSixNotInPlayId || entity.playId in LotteryId.welfareThreePlayId || entity.playId in LotteryId.welfareSixPlayId){
-                    nameTv?.text = item.name + if(!selectList.isNullOrEmpty())"(赔率:${entity.convertOdds})" else ""
+                if( entity.playId in LotteryId.markSixNotInPlayId || entity.playId in  LotteryId.welfareThreePlayId || entity.playId in LotteryId.welfareSixPlayId){
+                    nameTv?.text = item.name.plus(if(!selectList.isNullOrEmpty())"(赔率:${entity.convertOdds})" else "")
                 }
+                convertSelectList(selectList)
                 onItemClickListener?.onItemClick(adapter, view, position)
             }
         }
     }
 
+    private fun convertRandomPosition(position:Int,item: LotteryGroupInfoEntity):List<LotteryInfoEntity>{
+        var infoEntityList = item.datas
+        if(position == randomPosition){
+            val infoGroupEntity = data[position]
+            infoEntityList = infoGroupEntity.datas
+            val infoEntity = infoEntityList[Random().nextInt(infoEntityList.size)]
+            infoEntity.selectId = 1
+            selectList.clear()
+            selectList.add(infoEntity)
+            convertSelectList(selectList)
+            //通知选中数据更新
+            CombineEntityLiveData.postValue(combineList)
+        }
+        randomPosition = -1
+        return infoEntityList
+    }
+
     /**
      * 是否选择或者删除Item
      */
-    private fun isSelectEntity(entity: LotteryInfoEntity): Boolean {
+    private fun isSelectEntity(entity: LotteryInfoEntity,groupPosition:Int): Boolean {
         if (entity.selectId == 0) {
             //最大值判断
             if(LotteryId.maxSelectMap.any { (key,value) ->selectList.size == key && entity.playId in value }){
@@ -72,12 +112,14 @@ class LotteryAreaAdapter(dataList: List<LotteryGroupInfoEntity>?) :
                 return false
             }
             entity.selectId = 1
+            entity.groupPosition = groupPosition //一些特殊处理，比如11选五直选，做排列组合使用较多
             selectList.add(entity)
         } else {
             entity.selectId = 0
             selectList.remove(entity)
         }
         entity.convertOdds = convertOdds(entity.playId)
+
         return true
     }
 
@@ -130,6 +172,134 @@ class LotteryAreaAdapter(dataList: List<LotteryGroupInfoEntity>?) :
             12 -> "8.5"
             else -> "--"
         }
+    }
+
+
+    private fun convertSelectList(selectList:List<LotteryInfoEntity>){
+        combineList.clear()
+        val selectSize = selectList.size
+        if(selectSize <= 0){
+            return
+        }
+
+        val playId = selectList[0].playId
+        //根据最少选择数来做组合区分，返回0则表示不需要对选择的数据做排列组合
+       val tempList = when {
+            LotteryId.leastOneList.any { it == playId } -> {
+                //只有一注，需要设置组合注数为1注
+                val combineSize = when {
+                    playId in LotteryId.markSixNotInPlayId  -> if(selectSize >= 5 ) 1 else 0
+                    playId in LotteryId.welfareThreePlayId  -> if(selectSize >= 5 ) 1 else 0
+                    playId in LotteryId.welfareSixPlayId  -> if(selectSize >= 4 ) 1 else 0
+                    LotteryId.maxSelectMap.any { (key,value) ->selectList.size == key && playId in value } -> 1
+                    else -> 0
+                }
+                combineOneList(selectList,1,combineSize)
+            }
+            LotteryId.leastTwoList.any { it == playId || it == menuId } -> {
+                if(playId in  LotteryId.combineList){
+                    convertCombineList(selectList)
+                }else{
+                    combineOneList(selectList,2, 1)
+                }
+            }
+            LotteryId.leastThreeList.any { it == playId || it == menuId } -> {
+                if(playId in  LotteryId.combineList){
+                    convertCombineList(selectList)
+                }else{
+                    combineOneList(selectList,3, 1)
+                }
+            }
+            LotteryId.leastFourList.any { it == playId || it == menuId } -> {
+                combineOneList(selectList,4, 1)
+            }
+            LotteryId.leastFiveList.any { it == menuId } -> {
+                combineOneList(selectList,5, 1)
+            }
+            else -> selectList
+        }
+        combineList.addAll(tempList)
+    }
+
+    /**
+     * 只返回一个重新组合后的数据，一些特殊组合数
+     * 根据后台需要把选中的集合做一个名称或者playId的拼接
+     */
+    private fun combineOneList(selectList: List<LotteryInfoEntity>,size:Int,combineSize:Int):List<LotteryInfoEntity>{
+        if(combineSize == 0){
+            return mutableListOf()
+        }
+        val convertPlayId = mutableListOf<String>()
+        val convertName = mutableListOf<String>()
+        val convertNameSb = StringBuilder()
+        val convertPlaySb = StringBuilder()
+        selectList.forEach{entity ->
+            if(entity.name !in convertName){
+                convertName.add(entity.name)
+                convertNameSb.append(",")
+                convertNameSb.append(entity.name)
+            }
+            if(entity.playId !in convertPlayId){
+                convertPlayId.add(entity.playId)
+                convertPlaySb.append(",")
+                convertPlaySb.append(entity.playId)
+            }
+        }
+        val entity = selectList[0]
+        entity.convertName = if(convertName.size <=1) null else convertNameSb.toString().replaceFirst("," ,"")
+        entity.convertPlayId =if(convertPlayId.size <=1)  null else convertPlaySb.toString().replaceFirst("," ,"")
+        entity.combineSize = if(size == 1) combineSize else combine(selectList.size,size)
+        entity.convertOdds = convertOdds(entity.playId)
+        entity.type= LotteryInfoEntity.ONLY_ONE
+        return listOf(entity)
+    }
+
+    /**
+     * 组合数
+     * @param combineSize
+     * @param n
+     * @return
+     */
+    private fun combine(combineSize:Int, n: Int): Int {
+        //如果是组合数n==1或者n==1或者选中的数字小于组合数，都返回0
+        return when {
+            n == 0 || n == 1 || combineSize < n -> 0
+            //C(7,3)=7*6*5/3*2*1 公式
+            combineSize == n -> 1
+            else  -> CombineUtils.combineSize(combineSize, n)
+        }
+    }
+
+    /**
+     * 从新组合数组
+     * 根据选中中集合，重新拆分，通过排列顺序排列出一个新的组合数组
+     */
+    private fun convertCombineList(selectList: List<LotteryInfoEntity>):List<LotteryInfoEntity>{
+        val combineOneList = selectList.filter { it.groupPosition == 0 }
+        val combineTwoList = selectList.filter { it.groupPosition == 1 }
+        val combineThreeList = selectList.filter { it.groupPosition == 2 }
+        val combineNewList = arrayListOf<LotteryInfoEntity>()
+        if(combineTwoList.isNullOrEmpty())return combineNewList
+        combineOneList.forEach { oneEntity ->
+            combineTwoList.forEach { twoEntity ->
+                when {
+                    oneEntity.playId == ElevenPlayId.STRAIGHT_THREE_PLAYID || oneEntity.playId in LotteryId.welfareThreeLocationList -> when {
+                        combineThreeList.isNullOrEmpty() -> return combineNewList
+                        else -> combineThreeList.forEach { threeEntity ->
+                            oneEntity.convertName = oneEntity.name + "," + twoEntity.name + "," + threeEntity.name
+                            oneEntity.combineSize = combineOneList.size * combineTwoList.size * combineThreeList.size
+                            combineNewList.add(oneEntity)
+                        }
+                    }
+                    else -> {
+                        oneEntity.combineSize = combineOneList.size * combineTwoList.size
+                        oneEntity.convertName = oneEntity.name + "," + twoEntity.name
+                        combineNewList.add(oneEntity)
+                    }
+                }
+            }
+        }
+        return combineNewList
     }
 }
 
@@ -190,7 +360,7 @@ class AreaMarkSixAdapter(dataList: List<LotteryInfoEntity>?) :
         nameTv.text = item.name
         oddsTv.text = item.odds
         numberRecyclerView.adapter = AreaMarkSixContentAdapter(item.color.split(","), item.belongNumbers.split(","))
-        BackgroundColorUtils.changeColor(mContext, helper.itemView, nameTv, oddsTv, item.selectId, item.isNumber)
+        BackgroundColorUtils.changeColor(mContext, helper.itemView, nameTv, oddsTv, item.selectId, 0)
     }
 }
 

@@ -4,14 +4,18 @@ import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Toast
 import com.ling.kotlin.LotteryApp
-import com.ling.kotlin.retroft.HttpConfig
 import android.util.DisplayMetrics
 import android.app.Activity
+import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.annotation.NonNull
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.ling.kotlin.R
 import io.paperdb.Paper
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 
 class ContextUtils{
@@ -28,10 +32,18 @@ class ToastUtils{
     }
 }
 
-class HeaderMapUtils{
+class DialogUtils{
     companion object{
-         fun commonHeader():Map<String,String> =  mapOf("Staffid" to HttpConfig.KEY_MAP,"Timestamp" to (System.currentTimeMillis()/1000).toString(),"username" to "ak1234","token" to "5401da9e67f0427c9212eb601a44be51")
+
+        fun showDialog(clz: DialogFragment, @NonNull supportFragmentManager: FragmentManager, tag: String) {
+            val ft = supportFragmentManager.beginTransaction()
+            val fragment = supportFragmentManager.findFragmentByTag(tag)
+            fragment?.let {ft.remove(it) }
+            ft.add(clz, tag)
+            ft.commitAllowingStateLoss()
+        }
     }
+
 }
 
 class TimerUtils(millisInFuture: Long, countDownInterval: Long, private var listener: TimerTaskListener?) :CountDownTimer(millisInFuture, countDownInterval) {
@@ -73,9 +85,9 @@ object DisplayUtils {
     }
 
     // 屏幕宽度（像素）
-    fun getWindowWidth(context: Activity): Int {
+    fun getWindowWidth(context: Activity?): Int {
         val metric = DisplayMetrics()
-        context?.windowManager.defaultDisplay.getMetrics(metric)
+        context?.windowManager?.defaultDisplay?.getMetrics(metric)
         return metric.widthPixels
     }
 
@@ -97,6 +109,29 @@ object CacheUtils{
     fun getFollowLottery():MutableList<Int>{
         return try {Paper.book().read("lotterys")}catch (e:Exception){mutableListOf()}
     }
+    fun saveChip(chips:MutableList<Int>){
+        Paper.book().write("chips",chips)
+    }
+    fun getChips():MutableList<Int>{
+        return try {Paper.book().read("chips")}catch (e:Exception){
+            mutableListOf(10,100,500)
+        }
+    }
+
+    fun saveOpenSound(isOpenSound: Boolean) {
+        Paper.book().write("isOpenSound", isOpenSound)
+    }
+
+    fun isOpenSound(): Boolean {
+        try {
+            return Paper.book().read("isOpenSound", false)
+        } catch (e: Exception) {
+
+        }
+
+        return false
+    }
+
 }
 
 object DateUtils{
@@ -111,6 +146,11 @@ object DateUtils{
 
     private fun getSDF(pattern: String): SimpleDateFormat {
         return SimpleDateFormat(pattern)
+    }
+
+    fun convertTime(time:String?): String? {
+
+        return time?.let { if (it.contains("T")) it.replace("T", " ", true) else it }
     }
 }
 
@@ -175,4 +215,132 @@ object BankUtils {
         "SDB" to R.drawable.ic_bank_sdb,//深圳发展银行
         "YSF" to R.drawable.ic_bank_ysf//云闪付
     )
+}
+
+
+/**
+ * 键盘相关工具类
+ */
+class KeyboardUtils private constructor() {
+
+    init {
+        throw UnsupportedOperationException("u can't instantiate me...")
+    }
+
+    companion object {
+
+        /*
+      避免输入法面板遮挡
+      <p>在manifest.xml中activity中设置</p>
+      <p>android:windowSoftInputMode="adjustPan"</p>
+     */
+        /**
+         * 动态显示软键盘
+         *
+         * @param activity activity
+         */
+        fun showSoftInput(activity: Activity) {
+            var view = activity.currentFocus
+            if (view == null) view = View(activity)
+            val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+            imm.showSoftInput(view, InputMethodManager.SHOW_FORCED)
+        }
+
+        /**
+         * 动态显示软键盘
+         *
+         * @param view 视图
+         */
+        fun showSoftInput(view: View) {
+            view.isFocusable = true
+            view.isFocusableInTouchMode = true
+            view.requestFocus()
+            val imm =
+                LotteryApp.instance.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+            imm.showSoftInput(view, InputMethodManager.SHOW_FORCED)
+        }
+
+        /**
+         * 动态隐藏软键盘
+         *
+         * @param activity activity
+         */
+        fun hideSoftInput(activity: Activity?) {
+            if (activity == null)
+                return
+            var view = activity.currentFocus
+            if (view == null) view = View(activity)
+            val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+        /**
+         * 动态隐藏软键盘
+         *
+         * @param view 视图
+         */
+        fun hideSoftInput(view: View) {
+            val imm =
+                LotteryApp.instance.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+
+        //显示键盘
+        fun showSoftKeyboard(view: View) {
+            if (view.requestFocus()) {
+                val imm = LotteryApp.instance.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+            }
+        }
+
+        /**
+         * 切换键盘显示与否状态
+         */
+        fun toggleSoftInput() {
+            val imm =
+                LotteryApp.instance.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager ?: return
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+        }
+
+        /**
+         * 点击屏幕空白区域隐藏软键盘
+         *
+         * 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘
+         *
+         * 需重写dispatchTouchEvent
+         *
+         * 参照以下注释代码
+         */
+        fun clickBlankArea2HideSoftInput() {
+            Log.d("tips", "U should copy the following code.")
+            /*
+        @Override
+        public boolean dispatchTouchEvent(MotionEvent ev) {
+            if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+                View v = getCurrentFocus();
+                if (isShouldHideKeyboard(v, ev)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+            return super.dispatchTouchEvent(ev);
+        }
+
+        // 根据EditText所在坐标和用户点击的坐标相对比，来判断是否隐藏键盘
+        private boolean isShouldHideKeyboard(View v, MotionEvent event) {
+            if (v != null && (v instanceof EditText)) {
+                int[] l = {0, 0};
+                v.getLocationInWindow(l);
+                int left = l[0],
+                        top = l[1],
+                        bottom = top + v.getHeight(),
+                        right = left + v.getWidth();
+                return !(event.getX() > left && event.getX() < right
+                        && event.getY() > top && event.getY() < bottom);
+            }
+            return false;
+        }
+        */
+        }
+    }
 }

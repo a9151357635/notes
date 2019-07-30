@@ -3,7 +3,6 @@ package com.ling.kotlin.lottery.bean
 import android.os.Parcel
 import android.os.Parcelable
 
-
 data class LotteryEntity(
     val blockTime: Int,
     val curPeriodNum: Long,

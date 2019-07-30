@@ -375,16 +375,15 @@ object LotteryId {
         ParentMenuId.MARK_SIX_RAPIDLY_NO_CHOICE_MENUID,
         ParentMenuId.ELEVEN_CHECK_SERIAL_CODE_MENUID
     )
-    //福彩3D和急速福彩3D(组选3和组选六)
-    val welfarPlayIdList = listOf(
-        WelfareId.WELFARE_GROUPTHREE_PLAYID,
-        WelfareId.WELFARE_GROUPSIX_PLAYID,
-        WelfareId.WELFARE_QUICK_GROUPTHREE_PLAYID,
-        WelfareId.WELFARE_QUICK_GROUPSIX_PLAYID
+
+    //福彩3D和急速福彩3D(三字定位)
+    val welfareThreeLocationList= listOf(
+        WelfareId.WELFARE_THREE_LOCATION_PLAYID,//福彩3D 三字定位
+        WelfareId.WELFARE_QUICK_THREE_LOCATION_PLAYID//福彩急速 三字定位
     )
 
     //福彩3D和急速福彩3D(二字定位)
-    val welfarTwoPlayIdList= listOf(
+    private val welfareTwoLocationList= listOf(
         WelfareId.WELFARE_TWO_LOCATION_PLAYID,//福彩3D二字定位 百拾定位
         WelfareId.WELFARE_TWO_FIRST_LOCATION_PLAYID,//福彩3D二字定位 百个定位
         WelfareId.WELFARE_TWO_SECOND_LOCATION_PLAYID,//福彩3二字定位 拾个定位
@@ -392,7 +391,6 @@ object LotteryId {
         WelfareId.WELFARE_QUICK_TWO_FIRST_LOCATION_PLAYID,//福彩急速二字定位 百个定位
         WelfareId.WELFARE_QUICK_TWO_SECOND_LOCATION_PLAYID//福彩急速二字定位 拾个定位
     )
-
 
     //选择的最大值
     val maxSelectMap = mapOf(
@@ -433,6 +431,7 @@ object LotteryId {
         )
     )
 
+
     //自选不中
     val markSixNotInPlayId = listOf(
         MarkSix.NO_CHOICE_PLAYID,
@@ -453,7 +452,8 @@ object LotteryId {
         WelfareId.WELFARE_GROUPSIX_PLAYID,
         WelfareId.WELFARE_QUICK_GROUPSIX_PLAYID
     )
-
+    //一些特殊的玩法使用如下的组合集合
+    val  combineList = arrayListOf<String>().plus(straightPlayId).plus(welfareThreeLocationList).plus(welfareTwoLocationList)
 }
 
 /**

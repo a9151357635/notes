@@ -5,15 +5,21 @@ import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Html
 import android.util.DisplayMetrics
 import android.view.*
 import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.ling.kotlin.R
+import com.ling.kotlin.common.CommonDialogEntity
 import com.ling.kotlin.common.NoticeEntity
 import com.ling.kotlin.utils.DateUtils
+import com.ling.kotlin.utils.DialogUtils
 import com.ling.kotlin.utils.DisplayUtils
+import kotlinx.android.synthetic.main.base_dialog_layout.view.*
 import kotlinx.android.synthetic.main.notice_dialog_layout.view.*
 
 
@@ -72,6 +78,10 @@ abstract class BaseDialogFragment : DialogFragment() {
         params.height = windowHeight
         win.attributes = params
     }
+
+    fun showDialog(clz: DialogFragment, tag: String) {
+        DialogUtils.showDialog(clz,childFragmentManager,tag)
+    }
 }
 
 class NoticeDialog( override val layoutId: Int = R.layout.notice_dialog_layout) : BaseDialogFragment(), View.OnClickListener {
@@ -83,7 +93,7 @@ class NoticeDialog( override val layoutId: Int = R.layout.notice_dialog_layout) 
     private lateinit  var nextTv: TextView
     private var dataList: List<NoticeEntity>? = null
      override val windowWidth: Int
-        get() = (DisplayUtils.getWindowWidth(activity!!) / 1.4).toInt()
+        get() = (DisplayUtils.getWindowWidth(activity) / 1.4).toInt()
     override fun initView(v: View) {
         mTitleTv = v.notice_title_tv
         mContentTv = v.notice_content_tv
@@ -143,8 +153,48 @@ class NoticeDialog( override val layoutId: Int = R.layout.notice_dialog_layout) 
             val (_, title, noticeContent, createTime) = it[noticeSize]
             mTitleTv.text = title
             mContentTv.text = noticeContent
-//            mTimeTv.text = DateUtils.getTimeYYYYMMDD(DateUtils.getDate(createTime))
             mTimeTv.text = createTime.replace("T"," ",true)
         }
+    }
+}
+
+/**
+ * 公共对话框
+ */
+class CommonDialog(private val dialogListener: DialogListener?=null,override val layoutId: Int = R.layout.base_dialog_layout) :BaseDialogFragment() {
+    override val windowWidth: Int
+        get() = (DisplayUtils.getWindowWidth(activity) / 1.4).toInt()
+    override fun initView(v: View) {
+        val dialogEntity = arguments?.getParcelable("dialogEntity") as? CommonDialogEntity ?: return
+        v.dialog_cancel_tv.visibility = if(dialogEntity.isShowCancel) View.VISIBLE else View.GONE
+        v.dialog_line.visibility = if(dialogEntity.isShowCancel) View.VISIBLE else View.GONE
+        if(dialogEntity.isShowInput){
+            v.dialog_content_et.visibility = View.VISIBLE
+            v.dialog_title_tv.visibility = View.GONE
+            v.dialog_content_tv.visibility = View.GONE
+        }else{
+            v.dialog_content_et.visibility = View.GONE
+            v.dialog_title_tv.visibility = View.VISIBLE
+            v.dialog_content_tv.visibility = View.VISIBLE
+        }
+        v.dialog_title_tv.text = if(dialogEntity.title.isNullOrEmpty()) context?.getString(R.string.dialog_title_tips) else dialogEntity.title
+        v.dialog_content_et.hint = dialogEntity.inputHint
+        v.dialog_cancel_tv.text = if(dialogEntity.cancelHint.isNullOrEmpty())  context?.getString(R.string.app_cancel_hint) else dialogEntity.cancelHint
+        v.dialog_ok_tv.text = if(dialogEntity.sureHint.isNullOrEmpty())  context?.getString(R.string.app_sure_hint) else dialogEntity.sureHint
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            v.dialog_content_tv.text = Html.fromHtml(dialogEntity.content, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            v.dialog_content_tv.text = Html.fromHtml(dialogEntity.content)
+        }
+        v.dialog_cancel_tv.setOnClickListener {
+            dismissAllowingStateLoss()
+        }
+        v.dialog_ok_tv.setOnClickListener {
+            dismissAllowingStateLoss()
+            dialogListener?.onClick(v.dialog_content_et.text.toString())
+        }
+    }
+    interface DialogListener{
+        fun onClick(content:String)
     }
 }

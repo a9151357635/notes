@@ -2,11 +2,11 @@ package com.ling.kotlin.lottery.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ling.kotlin.R
-import com.ling.kotlin.lottery.bean.HistoryEntity
-import com.ling.kotlin.lottery.bean.LotteryEntity
-import com.ling.kotlin.lottery.bean.LotteryGroupInfoEntity
-import com.ling.kotlin.lottery.bean.PeriodTimeEntity
+import com.ling.kotlin.common.WalletBalanceEntity
+import com.ling.kotlin.lottery.bean.*
+import com.ling.kotlin.lottery.utils.CurPeriodNumLiveData
+import com.ling.kotlin.lottery.utils.LotteryEntityLiveData
+import com.ling.kotlin.lottery.utils.WalletBalanceLiveData
 import com.ling.kotlin.retroft.BaseException
 import com.ling.kotlin.retroft.HttpConfig
 import com.ling.kotlin.retroft.RequestCallback
@@ -19,27 +19,26 @@ import com.ling.kotlin.utils.ToastUtils
 class LotteryRepository(private val baseViewModelEvent: IBaseViewModelEvent){
 
     private val lotteryService = LotteryRemoteData(baseViewModelEvent)
-    val lotteryList:MutableLiveData<List<LotteryEntity>> = MutableLiveData()
     val activityData:MutableLiveData<String> = MutableLiveData()
     val successData : MutableLiveData<String> = MutableLiveData()
-    val preriodTimeEntity:MutableLiveData<PeriodTimeEntity> = MutableLiveData()
-    val historyData:MutableLiveData<List<HistoryEntity>> = MutableLiveData()
-    val lotteryInfoLiveData:MutableLiveData<List<LotteryGroupInfoEntity>> = MutableLiveData()
+    val preriodTimeEntity = MutableLiveData<PeriodTimeEntity>()
+    val historyData = MutableLiveData<List<HistoryEntity>>()
+    val lotteryInfoLiveData = MutableLiveData<List<LotteryGroupInfoEntity>>()
+    val openNoteInfoLiveData = MutableLiveData<List<OpenNoteInfoEntity>>()
+    val delOpenNoteLiveData = MutableLiveData<String>()
     private val doubleModules = listOf("双面玩法","冠亚组合","正特","前中后")
     private val numberModules = listOf("数字")
     private val markSixModules = listOf("一肖","特肖","尾数","特码头尾","连肖","连尾")
     private val kThreeModules = listOf("三军","围骰","点数","长牌","短牌","和值","三连号","三同号","二同号","跨度","牌点","不出号码","必出号码")
-    fun getLotteryRemoteEntitys(refresh: Boolean):LiveData<List<LotteryEntity>>{
-        if(refresh){
-            lotteryService.getAllLotteryEntity(object : RequestCallback<List<LotteryEntity>> {
-                override fun onSuccess(data: List<LotteryEntity>) {
-                    val followList = CacheUtils.getFollowLottery()
-                    data.forEach {  convertLotteryTimeAttributes(it, followList) }
-                    lotteryList.value = data
-                }
-            })
-        }
-        return lotteryList
+    fun getLotteryRemoteEntitys():LiveData<List<LotteryEntity>>{
+        lotteryService.getAllLotteryEntity(object : RequestCallback<List<LotteryEntity>> {
+            override fun onSuccess(data: List<LotteryEntity>) {
+                val followList = CacheUtils.getFollowLottery()
+                data.forEach {  convertLotteryTimeAttributes(it, followList) }
+                LotteryEntityLiveData.postValue(data)
+            }
+        })
+        return LotteryEntityLiveData
     }
 
     /**
@@ -82,6 +81,8 @@ class LotteryRepository(private val baseViewModelEvent: IBaseViewModelEvent){
             override fun onSuccess(data: PeriodTimeEntity) {
                 data.convertRemainTime = data.remainTime-data.sysTime - data.blockTime
                 preriodTimeEntity.postValue(data)
+                //通知期号变更
+                CurPeriodNumLiveData.postValue(data.curPeriodNum)
             }
         })
         return preriodTimeEntity
@@ -120,9 +121,19 @@ class LotteryRepository(private val baseViewModelEvent: IBaseViewModelEvent){
     }
 
     fun getLotteryInfo(lotteryId: Int,menuId:String,menuName: String):LiveData<List<LotteryGroupInfoEntity>>{
-        lotteryService.getLotteryInfo(lotteryId,menuId,object:RequestCallback<List<LotteryGroupInfoEntity>>{
+        lotteryService.getLotteryInfo(lotteryId,menuId,object:RequestMultiplayCallback<List<LotteryGroupInfoEntity>>{
+            override fun onFail(e: BaseException) {
+//                if(e.code == HttpConfig.CODE_TOKEN_INVALID){
+//                    baseViewModelEvent.tokenInvalid()
+//                }else{
+//                    ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+//                }
+                ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+            }
+
             override fun onSuccess(data: List<LotteryGroupInfoEntity>) {
                 data.forEach {
+                    it.menuId = menuId
                     it.itemType = convertModel(menuName)
                 }
                 lotteryInfoLiveData.postValue(data)
@@ -140,5 +151,62 @@ class LotteryRepository(private val baseViewModelEvent: IBaseViewModelEvent){
             //亚冠和、特码、正码、正特、连码、自选不中和其他
             else -> LotteryGroupInfoEntity.SFY
         }
+    }
+
+    /**
+     * 获取用户钱包余额
+     */
+    fun getWalletBalance():LiveData<WalletBalanceEntity>{
+        lotteryService.getWalletBalance(object:RequestMultiplayCallback<WalletBalanceEntity>{
+            override fun onFail(e: BaseException) {
+                ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+            }
+
+            override fun onSuccess(data: WalletBalanceEntity) {
+                WalletBalanceLiveData.postValue(data)
+            }
+        })
+        return WalletBalanceLiveData
+    }
+
+    fun betting(lotteryId: Int,map: Map<String, String>): LiveData<String>{
+
+        lotteryService.betting(lotteryId,map,object:RequestMultiplayCallback<String>{
+            override fun onFail(e: BaseException) {
+                ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+            }
+
+            override fun onSuccess(data: String) {
+                successData.postValue(data)
+            }
+        })
+        return successData
+    }
+
+    fun openNoteEntity(lotteryId: Int,page:Int):LiveData<List<OpenNoteInfoEntity>>{
+        val map = mapOf("status" to "0","page" to page.toString(),"size" to "20","lotteryID" to lotteryId.toString())
+        lotteryService.openNoteEntity(map,object:RequestMultiplayCallback<OpenNoteEntity>{
+            override fun onFail(e: BaseException) {
+                ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+            }
+
+            override fun onSuccess(data: OpenNoteEntity) {
+                openNoteInfoLiveData.postValue(data.items)
+            }
+        })
+        return openNoteInfoLiveData
+    }
+
+    fun delOpenNoteEntity(id:String):LiveData<String>{
+        lotteryService.delOpenNoteEntity(id,object:RequestMultiplayCallback<String>{
+            override fun onFail(e: BaseException) {
+                ToastUtils.showToast(msg = "${e.code} msg==${e.message}")
+            }
+
+            override fun onSuccess(data: String) {
+                delOpenNoteLiveData.postValue(data)
+            }
+        })
+        return delOpenNoteLiveData
     }
 }

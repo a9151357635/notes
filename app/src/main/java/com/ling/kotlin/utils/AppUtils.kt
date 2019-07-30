@@ -6,6 +6,7 @@ import android.os.Build
 import android.text.Html
 import android.text.TextUtils
 import android.widget.TextView
+import com.ling.kotlin.BuildConfig
 import java.math.BigDecimal
 import java.util.regex.Pattern
 
@@ -25,6 +26,13 @@ object AppUtils{
         return p.matcher(iphone).matches()
     }
 
+    fun getAppColor(): String {
+        return when {
+            "k8" == BuildConfig.APP_TYPE -> "#3094DF"
+            "ylc" == BuildConfig.APP_TYPE -> "#F50B78"
+            else -> "#f6673d"
+        }
+    }
     /**
      * 截取俩位小说点
      * @param text
@@ -41,6 +49,10 @@ object AppUtils{
         val bd = BigDecimal(textNew)
         val setScale = bd.setScale(2, BigDecimal.ROUND_DOWN)
         return setScale.toString()
+    }
+
+    fun isYLCOrCXC(): Boolean {
+        return "ylc" == BuildConfig.APP_TYPE || "cxc" == BuildConfig.APP_TYPE
     }
 
     fun getAssetStr(file_name: String): String {

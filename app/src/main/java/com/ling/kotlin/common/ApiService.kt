@@ -1,11 +1,8 @@
 package com.ling.kotlin.common
 
-import com.ling.kotlin.lottery.bean.HistoryEntity
-import com.ling.kotlin.lottery.bean.LotteryEntity
-import com.ling.kotlin.lottery.bean.LotteryGroupInfoEntity
-import com.ling.kotlin.lottery.bean.PeriodTimeEntity
+import com.ling.kotlin.lottery.bean.*
 import com.ling.kotlin.retroft.BaseResponse
-import com.ling.kotlin.utils.HeaderMapUtils
+import com.ling.kotlin.retroft.HttpConfig
 import io.reactivex.Observable
 import retrofit2.http.*
 import retrofit2.http.POST
@@ -61,8 +58,44 @@ interface ApiService {
     fun getNoticeEntitys(@FieldMap partMap: Map<String,String>, @HeaderMap headerMap: Map<String, String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<List<NoticeEntity>>>
 
     /**
+     * 获取用户钱包金额
+     */
+    @GET("api/user/userinfo/balance")
+    fun getWalletBalance(@HeaderMap headerMap: Map<String, String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<WalletBalanceEntity>>
+
+    /**
+     * 投注请求
+     */
+    @FormUrlEncoded
+    @POST("order/bet/{lotteryId}")
+    fun betting(@Path("lotteryId")lotteryId:Int,@FieldMap partMap: Map<String,String>,@HeaderMap headerMap: Map<String, String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<String>>
+
+    /**
+     * 未结注单请求
+     */
+    @FormUrlEncoded
+    @POST("order/find")
+    fun openNoteEntity(@FieldMap partMap: Map<String, String>,@HeaderMap headerMap: Map<String, String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<OpenNoteEntity>>
+
+    /**
+     * 撤单请求
+     */
+    @GET("order/cancelBet/{id}")
+    fun delOpenNoteEntity(@Path("id")id:String,@HeaderMap headerMap: Map<String, String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<String>>
+    /**
      * 棋牌余额全部提取接口
      */
     @GET("chessCard/withdrawAll")
     fun getChessWithdrawAllUrl(@HeaderMap headerMap:Map<String,String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<String>>
+}
+
+
+class HeaderMapUtils{
+    companion object{
+        fun commonHeader():Map<String,String> = mapOf(
+            "Staffid" to HttpConfig.KEY_MAP,
+            "Timestamp" to (System.currentTimeMillis()/1000).toString(),
+            "username" to "dsnao112",
+            "token" to "e08b01bf22f84e298ea89e74626a239c")
+    }
 }

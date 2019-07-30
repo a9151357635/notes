@@ -74,34 +74,3 @@ class LotteryOpenNumberAdapter(openNumberList:List<String>,private val entity: H
         }
     }
 }
-
-class MarkSixAdapter(dataList:List<String>,private val contentList:List<String>,private val colorList:List<String>):BaseQuickAdapter<String,BaseViewHolder>(R.layout.lottery_history_open_other_item,dataList){
-
-    override fun convert(helper: BaseViewHolder, item: String?) {
-        //开奖号码dataSize，生肖号码zodiacSize，还有号码颜色resultColorSize 的大小都是一一对应的，如果不对应那么就不是正常的数据，则不显示
-        if(data.isNullOrEmpty() || colorList.isNullOrEmpty() || contentList.isNullOrEmpty() || data?.size != colorList?.size || data?.size != contentList?.size){
-            return
-        }
-        val numberListTv = listOf(
-            helper.getView<TextView>(R.id.number_one_tv),
-            helper.getView<TextView>(R.id.number_two_tv),
-            helper.getView<TextView>(R.id.number_three_tv),
-            helper.getView<TextView>(R.id.number_four_tv),
-            helper.getView<TextView>(R.id.number_five_tv),
-            helper.getView<TextView>(R.id.number_six_tv),
-            helper.getView<TextView>(R.id.number_seven_tv))
-        val contentListTv = listOf(
-            helper.getView<TextView>(R.id.number_content_one_tv),
-            helper.getView<TextView>(R.id.number_content_two_tv),
-            helper.getView<TextView>(R.id.number_content_three_tv),
-            helper.getView<TextView>(R.id.number_content_four_tv),
-            helper.getView<TextView>(R.id.number_content_five_tv),
-            helper.getView<TextView>(R.id.number_content_six_tv),
-            helper.getView<TextView>(R.id.number_content_seven_tv))
-        data.forEachIndexed { index, s ->
-            numberListTv[index].text = s
-            contentListTv[index].text = contentList[index]
-            LotteryUtils.colorMap[colorList[index]]?.let {numberListTv[index].setBackgroundResource(it)}
-        }
-    }
-}

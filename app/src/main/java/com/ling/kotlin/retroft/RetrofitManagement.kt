@@ -8,8 +8,10 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 import com.google.gson.GsonBuilder
 import com.google.gson.Gson
-import com.ling.kotlin.retroft.converter.GsonConvertFactory
 import com.ling.kotlin.retroft.converter.IntegerDefaultAdapter
+import com.ling.kotlin.retroft.converter.LongDefaultAdapter
+import com.ling.kotlin.retroft.converter.ResultJsonDeserializer
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RetrofitManagement private constructor(){
@@ -41,9 +43,8 @@ class RetrofitManagement private constructor(){
         //Retrofit和RX结合
         return Retrofit.Builder().client(client)
             .baseUrl(url)
-            .addConverterFactory(GsonConvertFactory.create()) //自定义Converter
-//            .addConverterFactory(GsonConverterFactory.create()) //自带converter解析
-//            .addConverterFactory(GsonConverterFactory.create(buildGson())) //自定义解析gson
+//            .addConverterFactory(GsonConvertFactory.create(builderGson())) //自定义Converter
+            .addConverterFactory(GsonConverterFactory.create(builderGson())) //自带converter解析
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
@@ -61,11 +62,11 @@ class RetrofitManagement private constructor(){
         return  value
     }
 
-    fun buildGson(): Gson {
+    fun builderGson(): Gson {
         return  GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:bet_open_layout")
             .registerTypeAdapter(Int::class.java, IntegerDefaultAdapter())
-            .registerTypeAdapter(Int::class.javaPrimitiveType, IntegerDefaultAdapter())
+            .registerTypeAdapter(Long::class.java, LongDefaultAdapter())
+            .registerTypeHierarchyAdapter(BaseResponse::class.java,  ResultJsonDeserializer())
             .create()
     }
 }

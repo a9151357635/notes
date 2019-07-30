@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="end"
+              android:layout_marginTop="50dp"
+              android:background="@mipmap/helper_menu"
+              android:orientation="vertical">
+
+
+    <TextView
+            android:id="@+id/lottery_helper_result_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="15dp"
+            android:drawableLeft="@drawable/ic_helper_history"
+            android:drawablePadding="15dp"
+            android:gravity="end|center"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/lottery_helper_result_hint"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/lottery_helper_basic_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:drawableLeft="@drawable/ic_helper_basic"
+            android:drawablePadding="15dp"
+            android:gravity="end|center"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/lottery_helper_basic_hint"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    <TextView
+            android:id="@+id/lottery_helper_desc_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:drawableLeft="@drawable/ic_helper_desc"
+            android:drawablePadding="15dp"
+            android:gravity="end|center"
+            android:padding="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/lottery_helper_play_hint"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/lottery_helper_induction_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:drawableLeft="@drawable/ic_helper_induction_open"
+            android:drawablePadding="15dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="right|center"
+            android:padding="10dp"
+            android:text="@string/lottery_helper_share_hint"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/lottery_helper_sound_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:drawableLeft="@drawable/ic_helper_sound_open"
+            android:drawablePadding="15dp"
+            android:gravity="right|center"
+            android:padding="10dp"
+            android:text="@string/lottery_helper_sound_hint"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    <TextView
+            android:id="@+id/lottery_helper_night_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:drawableLeft="@drawable/ic_helper_day"
+            android:drawablePadding="15dp"
+            android:gravity="right|center"
+            android:padding="10dp"
+            android:text="@string/lottery_helper_white_mode_hint"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/lottery_helper_today_hint"
+                android:textColor="@color/app_218cdc_color"
+                android:textSize="16sp" />
+
+        <TextView
+                android:id="@+id/lottery_helper_today_money_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/app_fount_color"
+                android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

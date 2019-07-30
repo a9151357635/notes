@@ -12,6 +12,7 @@ import com.ling.kotlin.login.LoginActivity
 import com.ling.kotlin.retroft.viewmodel.BaseViewModel
 import com.ling.kotlin.retroft.viewmodel.IBaseViewModelEventEventObserver
 import com.ling.kotlin.utils.ActivityManager
+import com.ling.kotlin.utils.DialogUtils
 import com.ling.kotlin.utils.ImmersionBarManager
 import kotlinx.android.synthetic.main.title_top_view.*
 
@@ -90,10 +91,6 @@ abstract class BaseActivity : AppCompatActivity(),IBaseViewModelEventEventObserv
     fun <T :BaseViewModel> getViewModel(clz:Class<T>) = ViewModelProviders.of(this).get(clz)
 
     fun showDialog(clz: DialogFragment, tag: String) {
-        val ft = supportFragmentManager.beginTransaction()
-        val fragment = supportFragmentManager.findFragmentByTag(tag)
-        fragment?.let {ft.remove(it) }
-        ft.add(clz, tag)
-        ft.commitAllowingStateLoss()
+        DialogUtils.showDialog(clz,supportFragmentManager,tag)
     }
 }

@@ -1,19 +1,23 @@
 package com.ling.kotlin.lottery.bean
 
-import com.chad.library.adapter.base.entity.MultiItemEntity
-import java.io.Serializable
+import androidx.room.*
 
+@Entity(indices = [Index(value = ["menuId"],unique = true)])
 data class LotteryGroupInfoEntity(
+    @PrimaryKey
+    var menuId:String,
     val lotteryId: Int,
     val playId: String,
     val name: String,
     val odds: String,
     val number: Int,
     val isNumber: Int,
+    @Embedded
     val datas: List<LotteryInfoEntity>,
     val remark: String,
     var itemType: Int
-) : Serializable {
+
+)  {
     companion object {
         const val DOUBLE = 1
         const val NUMBER = 2
@@ -22,8 +26,9 @@ data class LotteryGroupInfoEntity(
         const val K_THREE = 5
     }
 }
-
+@Entity
 data class LotteryInfoEntity(
+    @PrimaryKey
     val lotteryId: Int,
     val playId: String,
     val odds: String,
@@ -33,19 +38,17 @@ data class LotteryInfoEntity(
     val remark: String,
     val color: String,
     val belongNumbers: String,
-    var convertPlayId: String,
+    var convertPlayId: String?=null,
     var convertNumber: List<String>,
-    var convertName: String,
-    var type: Int = NORMAL,
+    var convertName: String ?=null,
+    var type: Int = 0,
     var selectId: Int,
-    var convertOdds: String
-) : Serializable, MultiItemEntity {
+    var convertOdds: String,
+    var groupPosition: Int,
+    var combineSize: Int
+){
     companion object {
-        const val NORMAL = 10
-        const val MARKSIX = 11
-        const val ELEVEN = 12
-        const val WELFARE = 13
+        //只有一注
+        const val ONLY_ONE = 10
     }
-
-    override fun getItemType(): Int = type
 }

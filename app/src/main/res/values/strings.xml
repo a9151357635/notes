@@ -14,6 +14,7 @@
     <string name="please_server_hint">请联系客服</string>
     <string name="app_login_hint">登录</string>
     <string name="app_loading_hint">加载中...</string>
+    <string name="app_balance_hint">%1$s元</string>
 
 
     <string name="tab_lottery_title_hint">彩票</string>
@@ -31,6 +32,29 @@
     <string name="lottery_period_hint">第%1$s期</string>
     <string name="lottery_select_max_hint">超过最大选中的%1$d号码</string>
     <string name="lottery_select_duplicate_hint">选择号码重复</string>
+    <string name="lottery_select_hint">共%1$d注: </string>
+    <string name="lottery_balance_hint">余额:%1$s元</string>
+    <string name="lottery_single_money_max_hint">单注最高下注500000</string>
+    <string name="lottery_single_field_money_max_hint">单场最高下注5000000</string>
+    <string name="lottery_please_money_hint">请选择输入投注金额</string>
+    <string name="lottery_money_max_balance_hint">投注金额:%1$s元不能大于当前余额:%2$s元</string>
+    <string name="lottery_shortcut_hint">快捷投注:</string>
+    <string name="lottery_rule_hint">我已阅读并同意《委托投注规则》</string>
+    <string name="lottery_min_max_hint">单注最低:￥1  单注最高:￥500000  单场最高:￥5000000</string>
+    <string name="lottery_bet_money_hint">总下注额:</string>
+    <string name="lottery_bet_content_hint">赔率%1$s×%2$s元</string>
+    <string name="lottery_bet_name_hint">%1$s&#32;&#32;第%2$s期</string>
+    <string name="lottery_bet_detail_hint">投注内容:%1$s</string>
+    <string name="lottery_bet_del_content_hint">是否确认撤销已经投注的订单</string>
+    <string name="lottery_bet_del_success_hint">撤销投注成功</string>
+    <string name="lottery_helper_result_hint">开奖结果</string>
+    <string name="lottery_helper_basic_hint">基本走势</string>
+    <string name="lottery_helper_play_hint">玩法说明</string>
+    <string name="lottery_helper_share_hint">摇晃机选</string>
+    <string name="lottery_helper_sound_hint">游戏声音</string>
+    <string name="lottery_helper_white_mode_hint">白天模式</string>
+    <string name="lottery_helper_night_mode_hint">夜间模式</string>
+    <string name="lottery_helper_today_hint">今日输赢</string>
 
     <string name="wallet_money_hint">%1$s元</string>
     <string name="wallet_detail_money_hint">金额</string>

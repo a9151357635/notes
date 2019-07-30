@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.ling.kotlin.login.LoginActivity
 import com.ling.kotlin.retroft.viewmodel.BaseViewModel
 import com.ling.kotlin.retroft.viewmodel.IBaseViewModelEventEventObserver
+import com.ling.kotlin.utils.DialogUtils
 import kotlinx.android.synthetic.main.title_top_view.view.*
 
 abstract class BaseFragment : Fragment(), IBaseViewModelEventEventObserver {
@@ -74,11 +75,6 @@ abstract class BaseFragment : Fragment(), IBaseViewModelEventEventObserver {
 
     fun <T : BaseViewModel> getViewModel( clz:Class<T>) = ViewModelProviders.of(this).get(clz)
     fun showDialog(clz: DialogFragment, tag: String) {
-
-        val ft = childFragmentManager.beginTransaction()
-        val fragment = childFragmentManager.findFragmentByTag(tag)
-        fragment?.let {ft.remove(it) }
-        ft.add(clz, tag)
-        ft.commitAllowingStateLoss()
+        DialogUtils.showDialog(clz,childFragmentManager,tag)
     }
 }

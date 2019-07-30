@@ -1,6 +1,6 @@
 package com.ling.kotlin.utils
 
-class CombineUtils {
+object CombineUtils {
 
 
     /**

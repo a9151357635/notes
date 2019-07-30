@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="2dp"
-            android:text="123454"
+            android:text="0.0元"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/bet_drawer_balance_hint"
             app:layout_constraintTop_toBottomOf="@+id/bet_drawer_username_tv"
