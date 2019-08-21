@@ -22,7 +22,7 @@ class FollowFragment(override val layoutId:Int = R.layout.collection_layout) : B
         adapter.setOnItemClickListener { adapter, view, position ->
             val entity = adapter.getItem(position) as LotteryEntity
             view?.let {
-                Navigation.findNavController(it).navigate(R.id.action_lottery_to_betActivity,  bundleOf("lotteryId" to entity.lotteryId,"lotteryName" to entity.lotteryName,"menuList" to entity.menuDetails))
+                Navigation.findNavController(it).navigate(R.id.action_lottery_to_betActivity,  bundleOf("lotteryId" to entity.lotteryId))
             }
         }
         adapter.setOnItemChildClickListener { adapter, view, position ->

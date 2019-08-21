@@ -209,4 +209,13 @@ class LotteryRepository(private val baseViewModelEvent: IBaseViewModelEvent){
         })
         return delOpenNoteLiveData
     }
+
+    fun getVerifyCode(){
+        lotteryService.getVerifyCode(object :RequestCallback<String>{
+            override fun onSuccess(data: String) {
+                println("data==$data")
+            }
+
+        })
+    }
 }

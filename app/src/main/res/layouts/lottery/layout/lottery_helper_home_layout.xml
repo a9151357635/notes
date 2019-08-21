@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/app_home_background_color"
+              android:orientation="vertical">
+
+    <include layout="@layout/title_top_view"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/historyBV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:labelVisibilityMode="labeled"
+            android:background="@android:color/white"
+            app:menu="@menu/lottery_history_layout"/>
+
+    <fragment
+            android:id="@+id/historyHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            app:navGraph="@navigation/lottery_history_navigation"/>
+
+</LinearLayout>

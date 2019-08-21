@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">kotlinProject</string>
+    <string name="app_name">大地娱乐</string>
 
-
+    <string name="app_no_permission_hint">缺少必要权限，应用即将关闭</string>
     <string name="app_update_manual_hint">双击手动更新</string>
     <string name="app_update_version_hint">更新中,请稍候...</string>
     <string name="app_update_version_content_hint">本次更新内容:\n\n%1$s</string>
@@ -23,6 +23,35 @@
     <string name="tab_server_title_hint">服务</string>
     <string name="tab_me_title_hint">我的</string>
 
+    <string name="login_account_hint">账号:</string>
+    <string name="login_pwd_hint">密码:</string>
+    <string name="login_account_input_hint">请输入账号</string>
+    <string name="login_pwd_input_hint">请输入密码</string>
+    <string name="login_loging_hint">立即登录</string>
+    <string name="login_demo_hint">免费试玩</string>
+    <string name="login_register_hint">立即注册</string>
+    <string name="login_foget_pwd_hint">忘记密码</string>
+
+    <string name="app_register_account_hint">账号必须为6-15位数字与字母的组合</string>
+    <string name="app_register_pwd_hint">6-20位数字字母组合</string>
+    <string name="app_register_repwd_hint">请确认密码</string>
+    <string name="app_register_realname_hint">须与银行户名相同，否则不能出款</string>
+    <string name="app_register_phone_number_hint">请输入手机号码</string>
+    <string name="app_register_withdrawal_pwd_hint">只能输入4位数字</string>
+    <string name="app_register_sur_hint">确认注册</string>
+    <string name="app_register_error_account_hint">用户名不能为空</string>
+    <string name="app_register_error_pwd_hint">密码不能为空</string>
+    <string name="app_register_error_pwd_length_hint">密码位数不能小于6位</string>
+    <string name="app_register_error_repwd_hint">确认密码不能为空</string>
+    <string name="app_register_error_realname_hint">账中文名不能为空</string>
+    <string name="app_register_error_phone_hint">手机不能为空</string>
+    <string name="app_register_error_withdrawal_pwd_hint">提现密码不能为空</string>
+    <string name="app_register_error_same_pwd_hint">两次密码不一致</string>
+    <string name="app_register_error_format_account_hint">用户名格式错误</string>
+    <string name="app_register_error_format_pwd_hint">密码格式错误</string>
+    <string name="app_register_error_format_realname_hint">中文名格式错误</string>
+    <string name="app_register_error_format_phone_hint">手机号码格式错误</string>
+    <string name="app_register_error_format_withdrawal_pwd_hint">提现密码必须是4位</string>
 
     <string name="lottery_hot_title">热门</string>
     <string name="lottery_all_title">全部</string>
@@ -64,14 +93,6 @@
     <string name="wallet_detail_number_hint">流水号</string>
     <string name="wallet_detail_time_hint">时间</string>
 
-    <string name="login_account_hint">账号:</string>
-    <string name="login_pwd_hint">密码:</string>
-    <string name="login_account_input_hint">请输入账号</string>
-    <string name="login_pwd_input_hint">请输入密码</string>
-    <string name="login_loging_hint">立即登录</string>
-    <string name="login_demo_hint">免费试玩</string>
-    <string name="login_register_hint">立即注册</string>
-    <string name="login_foget_pwd_hint">忘记密码</string>
 
     <string name="server_title_hint">服务大厅</string>
     <string name="server_online_hint">在线客服</string>

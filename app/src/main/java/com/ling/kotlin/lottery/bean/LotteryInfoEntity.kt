@@ -2,8 +2,7 @@ package com.ling.kotlin.lottery.bean
 
 import androidx.room.*
 
-@Entity(indices = [Index(value = ["menuId"],unique = true)])
-data class LotteryGroupInfoEntity(
+data class LotteryGroupInfoEntity (
     @PrimaryKey
     var menuId:String,
     val lotteryId: Int,
@@ -26,8 +25,8 @@ data class LotteryGroupInfoEntity(
         const val K_THREE = 5
     }
 }
-@Entity
-data class LotteryInfoEntity(
+
+data class LotteryInfoEntity (
     @PrimaryKey
     val lotteryId: Int,
     val playId: String,

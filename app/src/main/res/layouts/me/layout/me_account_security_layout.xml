@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/app_background_color"
@@ -20,8 +21,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="13dp"
-                android:layout_marginStart="13dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:text="头像"
                 android:textColor="@color/app_text_main_another_normal_color"
                 android:textSize="15sp"/>
@@ -35,15 +36,18 @@
                 android:contentDescription="@null"
                 android:layout_marginRight="12dp"
                 android:src="@drawable/ic_next"/>
-
-        <com.ling.kotlin.widget.CircleImageView
+        <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/me_user_detail_icon_iv"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@id/me_user_detail_icon_next_iv"
-                android:src="@mipmap/default_icon"/>
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@id/me_user_detail_icon_next_iv"
+                android:background="@drawable/stroke_ripple_nomask_red_selector_drawable"
+                app:actualImageScaleType="focusCrop"
+                app:roundAsCircle="true"
+                app:overlayImage="@mipmap/default_icon"
+                android:contentDescription="@null"/>
     </RelativeLayout>
 
     <View

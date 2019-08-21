@@ -124,6 +124,7 @@ class BetActivity(override val layoutId: Int = R.layout.lottery_bet_layout):Base
         BetCanLiveData.observe(this, Observer {
             isOpen = it
         })
+        viewModel.getVerifyCode()
     }
 
     override fun onClick(v: View?) {

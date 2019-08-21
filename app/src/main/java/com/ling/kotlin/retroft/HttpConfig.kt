@@ -9,7 +9,8 @@ class HttpConfig {
 
     companion object {
 
-        const val BASE_URL_MAP = "https://ddapi.interfacea.com/"
+        const val BASE_URL_OLD_MAP = "https://ddapi.interfacea.com/"
+       const val BASE_URL_MAP = "http://192.168.0.15:9977/"
 
         const val HTTP_REQUEST_TYPE_KEY = "requestType"
 
@@ -29,7 +30,8 @@ class HttpConfig {
 
         const val CODE_RESULT_INVALID = -7
         const val CLIENT_TYPE = "Android"
-        const val CONTENT_TYPE = "application/x-www-form-urlencoded"
+        const val CONTENT_TYPE = "application/json"
+//        const val CONTENT_TYPE = "application/x-www-form-urlencoded"
 
     }
 

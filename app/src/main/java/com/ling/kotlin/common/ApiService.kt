@@ -3,7 +3,10 @@ package com.ling.kotlin.common
 import com.ling.kotlin.lottery.bean.*
 import com.ling.kotlin.retroft.BaseResponse
 import com.ling.kotlin.retroft.HttpConfig
+import com.ling.kotlin.utils.AppUtils
+import com.ling.kotlin.utils.NetUtils
 import io.reactivex.Observable
+import okhttp3.RequestBody
 import retrofit2.http.*
 import retrofit2.http.POST
 
@@ -87,6 +90,10 @@ interface ApiService {
      */
     @GET("chessCard/withdrawAll")
     fun getChessWithdrawAllUrl(@HeaderMap headerMap:Map<String,String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<String>>
+
+    @POST("common/getValidImage")
+    fun getVerifyCode(@HeaderMap headerMap:Map<String,String> = HeaderMapUtils.commonHeader()):Observable<BaseResponse<String>>
+
 }
 
 
@@ -96,6 +103,6 @@ class HeaderMapUtils{
             "Staffid" to HttpConfig.KEY_MAP,
             "Timestamp" to (System.currentTimeMillis()/1000).toString(),
             "username" to "dsnao112",
-            "token" to "e08b01bf22f84e298ea89e74626a239c")
+            "token" to "70e67edae1cb4aa48c44c5e366bd4059")
     }
 }

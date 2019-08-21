@@ -13,8 +13,6 @@
         <action android:id="@+id/action_lottery_to_betActivity"
                 app:destination="@id/betActivity"/>
         <argument android:name="lotteryId" app:argType="integer" android:defaultValue="0"/>
-        <argument android:name="lotteryName" app:argType="string"/>
-        <argument android:name="menuList" app:argType="com.ling.kotlin.lottery.bean.MenuEntity"/>
     </fragment>
     <fragment android:id="@+id/chess"
               android:label="chess"

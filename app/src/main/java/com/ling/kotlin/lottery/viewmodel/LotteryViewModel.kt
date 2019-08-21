@@ -2,9 +2,6 @@ package com.ling.kotlin.lottery.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.Transformations.switchMap
 import com.ling.kotlin.common.WalletBalanceEntity
 import com.ling.kotlin.lottery.bean.*
 import com.ling.kotlin.lottery.repository.LotteryRepository
@@ -21,4 +18,5 @@ class LotteryViewModel(application: Application) : BaseViewModel(application) {
     fun betting(lotteryId: Int,param: Map<String, String>):LiveData<String> = repository.betting(lotteryId,param)
     fun openNoteEntity(lotteryId: Int,page:Int):LiveData<List<OpenNoteInfoEntity>> = repository.openNoteEntity(lotteryId, page)
     fun delOpenNoteEntity(id:String):LiveData<String> = repository.delOpenNoteEntity(id)
+    fun getVerifyCode() = repository.getVerifyCode()
 }

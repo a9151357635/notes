@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/lottery_bet_navigation"
+            app:startDestination="@id/history">
+
+
+    <fragment android:id="@+id/history"
+              android:label="history"
+              android:name="com.ling.kotlin.lottery.HistoryFragment"
+              tools:layout="@layout/lottery_helper_history_layout"/>
+
+    <fragment android:id="@+id/chart"
+              android:label="chart"
+              android:name="com.ling.kotlin.lottery.ChartFragment"
+              tools:layout="@layout/lottery_helper_chart_layout"/>
+
+    <fragment android:id="@+id/desc"
+              android:label="desc"
+              android:name="com.ling.kotlin.lottery.DescFragment"
+              tools:layout="@layout/lottery_helper_desc_layout"/>
+</navigation>

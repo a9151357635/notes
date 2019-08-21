@@ -1,19 +1,21 @@
 package com.ling.kotlin.me
 
+import android.net.Uri
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.ling.kotlin.R
 import com.ling.kotlin.base.BaseFragment
+import com.ling.kotlin.me.entity.UserInfoEntity
+import com.ling.kotlin.me.repository.UserViewModel
 import kotlinx.android.synthetic.main.me_layout.view.*
 
 class MeFragment(override val layoutId:Int = R.layout.me_layout): BaseFragment(), View.OnClickListener {
 
-    private lateinit var mLevelTitleTv:TextView
-    private lateinit var mLevelTv:TextView
-
+    private lateinit var userViewModel: UserViewModel
     override fun initView(v: View) {
         v.me_home_setting_iv.visibility = View.INVISIBLE
         v.me_home_setting_iv.setOnClickListener(this)
@@ -30,20 +32,9 @@ class MeFragment(override val layoutId:Int = R.layout.me_layout): BaseFragment()
         v.me_home_user_version_cl.setOnClickListener(this)
         v.me_home_user_clear_cl.setOnClickListener(this)
         v.me_home_user_about_cl.setOnClickListener(this)
+        userViewModel = getViewModel(UserViewModel::class.java)
     }
 
-    private fun setLevelData(levelTitle: String, level: Int) {
-        mLevelTitleTv.text = levelTitle
-        mLevelTv.text = "VIP$level"
-        when(level){
-            in 1..10 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_one)
-            in 11..20 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_two)
-            in 21..30 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_three)
-            in 31..40 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_four)
-            in 41..50 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_five)
-            in 51..60 ->  mLevelTv.setBackgroundResource(R.drawable.ic_me_vip_six)
-        }
-    }
 
     override fun onClick(v: View?) {
         when(v?.id){
@@ -97,4 +88,27 @@ class MeFragment(override val layoutId:Int = R.layout.me_layout): BaseFragment()
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        userViewModel.findUserInfoEntity().observe(this, Observer {
+            showUserInfo(it)
+        })
+    }
+
+    private fun showUserInfo(info: UserInfoEntity){
+        view?.me_home_icon_iv?.setImageURI(Uri.parse(info.headPhoto),null)
+        view?.me_home_username_tv?.text = info.userName
+        view?.me_home_user_level_title_tv?.text = info.title
+        view?.me_home_user_level_tv?.text = "VIP${info.levelPuls}"
+        view?.me_home_user_level_tv?.setBackgroundResource(
+            when(info.levelPuls){
+                in 0..10 ->  R.drawable.ic_me_vip_one
+                in 11..20 -> R.drawable.ic_me_vip_two
+                in 21..30 -> R.drawable.ic_me_vip_three
+                in 31..40 -> R.drawable.ic_me_vip_four
+                in 41..50 -> R.drawable.ic_me_vip_five
+                else -> R.drawable.ic_me_vip_six
+            }
+        )
+    }
 }

@@ -30,7 +30,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-            <com.ling.kotlin.widget.CircleImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/me_home_icon_iv"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -38,8 +38,10 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/me_home_setting_iv"
                     android:background="@drawable/stroke_ripple_nomask_red_selector_drawable"
-                    android:contentDescription="@null"
-                    android:src="@mipmap/default_icon"/>
+                    app:actualImageScaleType="focusCrop"
+                    app:roundAsCircle="true"
+                    app:overlayImage="@mipmap/default_icon"
+                    android:contentDescription="@null"/>
             <TextView
                     android:id="@+id/me_home_username_tv"
                     android:layout_width="wrap_content"

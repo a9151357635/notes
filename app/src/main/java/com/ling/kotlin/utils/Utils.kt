@@ -1,11 +1,16 @@
 package com.ling.kotlin.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.CountDownTimer
 import android.widget.Toast
 import com.ling.kotlin.LotteryApp
 import android.util.DisplayMetrics
 import android.app.Activity
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.telephony.TelephonyManager
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -13,9 +18,13 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.ling.kotlin.R
+import com.ling.kotlin.login.entity.LoginEntity
 import io.paperdb.Paper
 import java.text.SimpleDateFormat
 import java.util.*
+
+
+
 
 
 class ContextUtils{
@@ -102,6 +111,27 @@ object DisplayUtils {
 
 object CacheUtils{
 
+
+    fun saveLoginInfo(loginEntity: LoginEntity){
+        Paper.book().write("loginInfo",loginEntity)
+    }
+
+    fun getLoginInfo():LoginEntity?{
+        try {
+            return Paper.book().read("loginInfo")
+        } catch (e: Exception) {
+
+        }
+        return null
+    }
+
+    fun getToken():String?{
+        return getLoginInfo()?.token
+    }
+
+    fun getRefreshToken():String?{
+        return  getLoginInfo()?.refreshToken
+    }
     fun saveFollowLottery(followList:MutableList<Int>){
         Paper.book().write("lotterys",followList)
     }
@@ -128,7 +158,6 @@ object CacheUtils{
         } catch (e: Exception) {
 
         }
-
         return false
     }
 
@@ -342,5 +371,64 @@ class KeyboardUtils private constructor() {
         }
         */
         }
+    }
+}
+
+
+/**
+ * Created by wangguifa on 2017/5/22
+ * 获取网络状态工具类
+ */
+object NetUtils {
+    private const val  NETWORK_NONE = 0 // 没有网络连接
+    private const val  NETWORK_WIFI = 1 // wifi连接
+    private const val  NETWORK_2G = 2 // 2G
+    private const val  NETWORK_3G = 3 // 3G
+    private const val  NETWORK_4G = 4 // 4G
+    private const val  NETWORK_5G = 5 // 5G
+    private const val NETWORK_MOBILE = 6 // 手机流量
+
+    /**
+     * 获取运营商名字
+     */
+    fun getOperatorName():String?{
+        val tm = ContextUtils.context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager??:return null
+        return tm.simOperatorName
+
+    }
+
+    /**
+     * 获取当前网络连接的类型
+     */
+    @SuppressLint("WrongConstant")
+    fun  getNetworkState():String{
+        val cm = ContextUtils.context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager??:return "None"
+
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+          val capabilities = cm.getNetworkCapabilities(cm.activeNetwork)
+           if(capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)){
+
+           }
+       } else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+           val networks = cm.allNetworks
+           networks?.forEach {
+               val capabilities = cm.getNetworkCapabilities(it)
+               if(capabilities.hasCapability(NetworkCapabilities.TRANSPORT_WIFI)){
+                   return "WIFI"
+               }else if(capabilities.hasCapability(NetworkCapabilities.TRANSPORT_VPN)){
+                   return "VPN"
+               }else if(capabilities.hasCapability(NetworkCapabilities.TRANSPORT_CELLULAR)){
+                   return "Mobile"
+               }else if(capabilities.hasCapability(NetworkCapabilities.TRANSPORT_ETHERNET)){
+                   return "ET"
+               }
+           }
+       }else {
+           val info = cm.activeNetworkInfo
+           if(info.isConnected){
+               return info.typeName
+           }
+       }
+        return "None"
     }
 }

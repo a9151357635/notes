@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <application
             android:name=".LotteryApp"
             android:allowBackup="true"
@@ -17,30 +18,41 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".SplayActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+        </activity>
         <activity
                 android:name=".MainActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:launchMode="singleTask"
                 android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".login.LoginActivity"
+                android:launchMode="singleTask"
+                android:screenOrientation="portrait"/>
+
+        <activity
+                android:name=".login.RegisterActivity"
                 android:launchMode="singleTask"
                 android:screenOrientation="portrait"/>
         <activity
                 android:name=".lottery.BetActivity"
                 android:launchMode="singleTask"
                 android:screenOrientation="portrait"/>
-
         <activity
                 android:name=".lottery.OpenNoteActivity"
                 android:launchMode="singleTask"
                 android:screenOrientation="portrait"/>
+        <activity android:name=".lottery.HelperActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".lottery.LotteryHistoryActivity"
                 android:launchMode="singleTask"

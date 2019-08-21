@@ -1,5 +1,6 @@
 package com.ling.kotlin.retroft
 
+import com.ling.kotlin.common.ApiNewService
 import com.ling.kotlin.common.ApiService
 
 import com.ling.kotlin.retroft.viewmodel.IBaseViewModelEvent
@@ -19,6 +20,10 @@ open class BaseRemoteDataSource(private val baseViewModelEvent:IBaseViewModelEve
 
     protected fun getService(): ApiService = getService(
         ApiService::class.java,
+        HttpConfig.BASE_URL_OLD_MAP
+    )
+    protected fun getNewService(): ApiNewService = getService(
+        ApiNewService::class.java,
         HttpConfig.BASE_URL_MAP
     )
 

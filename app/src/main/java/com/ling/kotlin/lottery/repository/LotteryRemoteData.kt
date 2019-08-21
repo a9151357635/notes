@@ -38,4 +38,17 @@ class LotteryRemoteData(baseViewModelEvent: IBaseViewModelEvent) : BaseRemoteDat
     fun delOpenNoteEntity(id:String,callback: RequestCallback<String>){
         execute(getService().delOpenNoteEntity(id),callback)
     }
+    fun getVerifyCode(callback: RequestCallback<String>){
+        execute(getService().getVerifyCode(),callback)
+    }
+
+
+    //new
+
+    /**
+     * 获取全部彩种
+     */
+    fun findLotteryEntitys(callback: RequestCallback<List<LotteryEntity>>){
+        executeQuietly(getNewService().findLotteryEntitys(),callback)
+    }
 }

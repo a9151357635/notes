@@ -70,6 +70,7 @@ class SoundPoolUtils(context:Context) {
         soundPool.stop(array.get(2))
         soundPool.stop(array.get(3))
         soundPool.stop(array.get(4))
+        soundPool.release()
     }
 }
 

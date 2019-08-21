@@ -3,6 +3,7 @@ package com.ling.kotlin.common
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ling.kotlin.me.entity.UserInfoEntity
 import com.ling.kotlin.retroft.BaseRemoteDataSource
 import com.ling.kotlin.retroft.RequestCallback
 import com.ling.kotlin.retroft.viewmodel.BaseViewModel
@@ -62,3 +63,9 @@ class CommonViewModel(application: Application):BaseViewModel(application){
         return repository.requestNoticeRemote(mapOf("page" to "1","size" to "20"))
     }
 }
+
+
+/**
+ * 数据清除
+ */
+object UserInfoLiveData : MutableLiveData<UserInfoEntity>()
