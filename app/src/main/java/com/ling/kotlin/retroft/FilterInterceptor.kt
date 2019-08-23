@@ -13,20 +13,28 @@ class FilterInterceptor : Interceptor {
         val originalRequest = chain.request()
         val httpBuilder = originalRequest.url.newBuilder()
         val requestBuilder = originalRequest.newBuilder().url(httpBuilder.build())
-        //封装公用的静态header头
+        //封装公用的静态header头--NEW
+//        requestBuilder.addHeader("Client-type", HttpConfig.CLIENT_TYPE)
+//        requestBuilder.addHeader("Content-Type", HttpConfig.CONTENT_TYPE)
+//        requestBuilder.addHeader("os", "Android")
+//        requestBuilder.addHeader("osVersion",AppUtils.getSystemVersion())
+//        requestBuilder.addHeader("deviceId", AppUtils.getDeviceId())
+//        requestBuilder.addHeader("version", AppUtils.getVersionName())
+//        requestBuilder.addHeader("userAgent", AppUtils.getSystemModel())
+//        requestBuilder.addHeader("x-platform-id","185473384870600704")
+//        requestBuilder.addHeader("apn", NetUtils.getNetworkState())//网络类型
+//        requestBuilder.addHeader("ts", (System.currentTimeMillis()/1000).toString())//时间戳
+//        CacheUtils.getToken()?.let {
+//            requestBuilder.addHeader("token", it)//token 用户登陆令牌
+//        }
+        //封装公用的静态header头--OLD
         requestBuilder.addHeader("Client-type", HttpConfig.CLIENT_TYPE)
         requestBuilder.addHeader("Content-Type", HttpConfig.CONTENT_TYPE)
-        requestBuilder.addHeader("os", "Android")
-        requestBuilder.addHeader("osVersion",AppUtils.getSystemVersion())
-        requestBuilder.addHeader("deviceId", AppUtils.getDeviceId())
-        requestBuilder.addHeader("version", AppUtils.getVersionName())
-        requestBuilder.addHeader("userAgent", AppUtils.getSystemModel())
-        requestBuilder.addHeader("x-platform-id","185473384870600704")
-        requestBuilder.addHeader("apn", NetUtils.getNetworkState())//网络类型
-        requestBuilder.addHeader("ts", (System.currentTimeMillis()/1000).toString())//时间戳
-        CacheUtils.getToken()?.let {
-            requestBuilder.addHeader("token", it)//token 用户登陆令牌
-        }
+        requestBuilder.addHeader("Staffid" , HttpConfig.KEY_MAP)
+        requestBuilder.addHeader("Timestamp", (System.currentTimeMillis()/1000).toString())
+        requestBuilder.addHeader("username" ,"dsnao112")
+        requestBuilder.addHeader("token" , "70e67edae1cb4aa48c44c5e366bd4059")
+
         return chain.proceed(requestBuilder.build())
     }
 }

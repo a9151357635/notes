@@ -67,7 +67,10 @@ class ResultJsonDeserializer : JsonDeserializer<BaseResponse<*>> {
                 }
                 val itemType = (typeOfT as ParameterizedType).actualTypeArguments[0]
                 val dataStr = jsonObject.get("data").toString()
-                response.data = context.deserialize(if(dataStr.isNull())jsonObject.get("msg") else jsonObject.get("data"), itemType)
+                if(dataStr.isNull()){
+                    return response
+                }
+                response.data = context.deserialize(jsonObject.get("data"), itemType)
             }
         }
         return response
@@ -77,7 +80,7 @@ class ResultJsonDeserializer : JsonDeserializer<BaseResponse<*>> {
      * 扩展函数
      */
     private fun String.isNull():Boolean{
-        return this =="{}" ||  this == "[]" ||  this ==""
+        return this =="{}" ||  this == "[]" || this.isEmpty() || "null" == this
     }
 }
 

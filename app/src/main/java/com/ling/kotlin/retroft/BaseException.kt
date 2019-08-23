@@ -19,8 +19,3 @@ class ServerResultException(message:String,code: Int = HttpConfig.CODE_UNKNOWN):
 class TokenInvalidResultException(message:String,code: Int = HttpConfig.CODE_TOKEN_INVALID) :
     BaseException(message,code)
 
-/**
- * 参数错误
- */
-class ParamterInvalidResultException(message:String,code: Int = HttpConfig.CODE_PARAMTER_INVALID) :
-    BaseException(message,code)
